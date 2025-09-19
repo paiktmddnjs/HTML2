@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본구조</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        div, main{
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+
+        /*화면 전체를 감싸는 div*/
+        .wrap{
+            width: 100%;
+            height: 100vh;
+        }
+
+        /*main content의 넓이가 1200까지만 늘어날 수 있게 가두는 영역*/
+        main{
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100vh;
+            /*overflow: scroll; 기준크기를 넘기면 스크롤을 만든다*/
+        }
+
+        main>div{
+            width: 100%;
+        }
+
+        #header{ 
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #navigator{height: 30px;}
+        #aside{
+            height: 80px;
+            display: flex;
+        }
+        #content{ 
+            min-height: calc(100% - 290px);
+            display: flex;
+        }
+        #footer{height: 120px;}
+
+        #header>div{text-align: center;}
+        #header> #header_1{width: 170px;}
+        #header> #header_2{
+            flex: 1;
+            max-width: 730px;
+        }
+        #header> #header_3{width: 140px;}
+
+        #content_1{width: 15%;}
+        #content_2{width: 65%;}
+        #content_3{width: 20%;}
+
+        #aside_1{flex: 4;}
+        #aside_2{flex: 6;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <main>
+            <div id="header">
+                <div id="header_1">로고</div>
+                <div id="header_2">메뉴1 메뉴2 메뉴3</div>
+                <div id="header_3">로그인|회원가입</div>
+            </div>
+            <div id="navigator"></div>
+            <div id="content">
+                <div id="content_1">컨텐츠1</div>
+                <div id="content_2">컨텐츠2</div>
+                <div id="content_3">컨텐츠3</div>
+            </div>
+            <div id="aside">
+                <div id="aside_1">사이드메뉴1</div>
+                <div id="aside_2">사이드메뉴2</div>
+            </div>
+            <div id="footer">
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>개요</title>
+
+    <script src="./resource/js/sample.js"></script>
+</head>
+<body>
+    <!--
+        웹은 크게 3요소
+        - html : 웹문서의 큰 틀을 잡을 때 사용(DOM Tree 구성)
+        - css : html로 구성된 DOM에 다양한 스타일 속성을 부여할 때 사용
+        - js : 웹문서에서 이벤트가 발생했을 때 실행할 기능을 정의한다.
+                -> html로 구성된 DOM을 편집.
+    -->
+
+    <h1>자바스크립트 개요</h1>
+    
+    <h3>1. 스크립트 언어란?</h3>
+    <p>
+        프로그램의 동작을 사용자의 요구사항에 맞게 수행되도록 해주는 용도 <br>
+        비교적 유연하게 동작하여 쉽게 사용이 가능하다.
+    </p>
+
+    <h3>2. 자바스크립트란</h3>
+    <p>
+        웹 브라우저에서 사용되는 인터프리터방식의 스크립트 언어로 브라우저에 엔진(V8)이 탑제되어있음.  <br>
+        - 인터프리터 방식 : 코드를 한줄씩 읽어가며 바로 실행하는 방식 <br>
+        (실시간으로 텍스트를 분석해서 실행됨 -> 코드에 문법오류가 있다면 런타임 시점에 알려줌)
+    </p>
+
+    <h3>3. js를 웹에서 사용하는 방법</h3>
+    <ol>
+        <li>inline(인라인) : 태그내에서 간단한 소스코드를 작성해서 실행되게하는 방법</li>
+        <li>internal(내부) : html문서 내에 소스코드를 작성해서 실행되게 하는 방법</li>
+        <li>external(외부) : 별도의 .js파일로 소스코드를 작성해서 가져다가 실행되게 하는 방법</li>
+    </ol>
+
+    <h4>1) inline</h4>
+    <p>[표현법] (태그 on이벤트명="해당 요소의 이벤트 발생시 실행할 코드")</p>
+
+    <button onclick="alert(`알림창 출력버튼 클릭!!`)">알림창 출력</button>
+    <button onclick="console.log('콘솔창 출력버튼 클릭!!')">콘솔창 출력</button>
+
+    <br><br>
+
+    <h4>2) internal</h4>
+    <p>
+        script태그 영역안에 소스코드를 작성 <br>
+        script태그는 head태그, body태그 어디에서건 사용 가능.
+    </p>
+
+    <button id="btn">알림창 출력</button>
+    <button onclick="btnClick()">콘솔창 출력</button>
+    <script>
+        // 한줄주석
+        /*
+            여러줄 주석
+        */
+
+        //js에서는 선택자를 통해서 DOM의 Element요소(태그)를 가져올 수 있음.
+        //document.querySelector(선택자) -> 선택자를 통해 요소 1개 가져옴.
+        let btn = document.querySelector("#btn");
+        btn.onclick = function(){
+            alert("알림창 출력!!!!!!!");
+        }
+
+        function btnClick(){
+            console.log("콘솔창 출력!!!!!!!");
+        }
+    </script>
+
+    <h4>3) external</h4>
+    <p>외부의 .js파일을 생성해서 따로 js코드를 작성한다.</p>
+
+    <button onclick="btnClick2()">알림창 출력</button>
+</body>
+</html>

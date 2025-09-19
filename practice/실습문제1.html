@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+<style>
+    .box2 {
+
+        width: 190px;
+        height: 180px;
+    }
+
+    #area1 {
+
+        background-color: brown;
+        width: 150px;
+        height: 150px;
+    }
+
+    #area2 {
+
+
+        background-color: rgb(20, 4, 4);
+        width: 150px;
+        height: 150px;
+    }
+
+    #buttonArea {
+
+
+        width: 200px;
+
+    }
+</style>
+
+<body>
+
+    <div id="area1"></div>
+    <input type="color">
+    <button onclick="changeColor()">변경</button>
+    <!-- <script>
+        function getColor() {
+
+            let inputColor = document.querySelector('input[type=color]');
+            return inputColor;
+        }
+
+        function changeColor() {
+
+            const Color = getColor();
+            document.getElementById("area1").style.backgroundColor = Color.value;
+
+        }
+
+    </script> -->
+
+    <script>  function getColor() {
+            return $('input[type="color"]');
+        }
+
+        function changeColor() {
+
+            const color = getColor().val();
+            $("#area1").css('background-color', color);
+        }
+
+
+    </script>
+
+
+
+    <br><br>
+
+    <div class="box2">
+        <div id="area2"></div>
+
+        <div id="buttonArea">
+            <button onclick="changeSize1()">50x50</button>
+
+            <button onclick="changeSize2()">100x100</button>
+
+            <button onclick="changeSize3()">200x200</button>
+        </div>
+    </div>
+
+
+
+    <!-- <script>
+
+        function changeSize1() {
+            let length = '50px';
+            document.getElementById("area2").style.width = length;
+            document.getElementById("area2").style.height = length;
+        }
+
+        function changeSize2() {
+            let length = '100px';
+            document.getElementById("area2").style.width = length;
+            document.getElementById("area2").style.height = length;
+        }
+
+
+        function changeSize3() {
+            let length = '200px';
+            document.getElementById("area2").style.width = length;
+            document.getElementById("area2").style.height = length;
+        }
+
+    </script> -->
+
+    <script>
+
+        function changeSize1() {
+
+            let length = '50px';
+            $("#area2").css('width', length);
+            $("#area2").css('height', length);
+        }
+        
+        function changeSize2() {
+
+            let length = '100px';
+            $("#area2").css('width', length);
+            $("#area2").css('height', length);
+        }
+
+        
+        function changeSize3() {
+
+            let length = '200px';
+            $("#area2").css('width', length);
+            $("#area2").css('height', length);
+        }
+
+    </script>
+
+</body>
+
+</html>

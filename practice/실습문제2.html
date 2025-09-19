@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous"></script>
+<style>
+    #area {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 550px;
+        height: 30px;
+        gap: 10px;
+    }
+
+    input {
+        height: 25px;
+        width: 130px;
+    }
+
+    select {
+
+
+        height: 20px;
+    }
+
+    #calc {
+        display: flex;
+
+        width: 60px;
+        height: 25px;
+    }
+
+    #resultIcon {
+
+        height: 100%;
+        width: 40px;
+    }
+
+    #result {
+        text-align: center;
+        border: 1px solid black;
+        height: 100%;
+        width: 250px;
+
+    }
+</style>
+
+<body>
+
+    <h1>Practice2</h1>
+    <div id="area">
+        <input type="number" id="firstNum">
+
+        <select id="selection">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="secondNum">
+
+
+
+        <button id="resultIcon" onclick="resultCalc()">=</button>
+        <div id="result"></div>
+    </div>
+
+
+    <!-- <script>
+        function resultCalc() {
+
+
+            const input1 = document.getElementById('firstNum');
+            const value1 = parseInt(input1.value); // 문자열을 숫자로 변환
+
+            const input2 = document.getElementById('secondNum');
+            const value2 = parseInt(input2.value); // 문자열을 숫자로 변환
+            const selection = document.getElementById('selection').value;
+
+            let result;
+            if (selection === "+") {
+                result = value1 + value2;
+            } else if (selection === "-") {
+                result = value1 - value2;
+            } else if (selection === "*") {
+                result = value1 * value2;
+            } else if (selection === "/") {
+                // 0으로 나누는 오류 방지
+                if (value2 === 0) {
+                    result = "연산불가";
+                    document.getElementById('result').style.color = 'white';
+                    document.getElementById('result').style.backgroundColor = 'red';
+
+                } else {
+                    result = value1 / value2;
+                }
+            } else {
+                result = "올바른 연산자가 아닙니다.";
+            }
+            document.getElementById('result').textContent = result;
+
+        }
+
+
+    </script> -->
+
+
+    <script>
+
+    </script>
+</body>
+
+</html>

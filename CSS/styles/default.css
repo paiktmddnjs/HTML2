@@ -1,0 +1,124 @@
+/* css영역 */
+
+/* 1. 속성 선택자*/
+/* div요소중에서 name속성값에 name1이 포함되어있는 요소*/
+div[name~=name1]{
+    background: yellow;
+}
+
+/* div요소 중 name속성값이 name1과 일치하는 요소*/
+div[name=name1]{
+    background: blue;
+}
+
+/* div요소 중 class속성값이 class로 시작하는 요소(-으로 구분)*/
+div[class|=class]{
+    background: gray;
+}
+
+/* div요소 중 name속성값이 na로 시작하는 요소*/
+div[name^=na]{
+    background: wheat;
+}
+
+/* div요소 중 class속성 값이 ss로 끝나는 요소 */
+div[class$=ss]{
+    background: yellow;
+    color: red;
+}
+
+/* 문제 : class속성값이 div-class인 요소들 중에서
+          name속성값에 name3가 포함된 요소 배경을 pink로 변경
+*/
+.div-class[name~=name3]{
+    background: pink;
+}
+
+/*
+    아이디가 test1인 요소들의 자식들 중 h4만 선택
+*/
+#test1>h4{
+    background: black;
+}
+
+#test1{
+    color: yellow;
+}
+
+/* #test1>ul>li{
+    background: blue;
+} */
+
+/* a b : a요소의 후손들 중에서 b요소 전부선택 */
+#test1 li{
+    background: blue;
+}
+
+/* 3.동위선택자 */
+#test2+div{
+    background: red;
+}
+
+#test2+ul{
+    background: red;
+} /*앞에오는 선택자 바로 뒤에오는 요소가 아니기때문 적용x*/
+
+#test2~ul{
+     background: blue;
+}
+
+.area{
+    background: greenyellow;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+#active-test:active{
+    background: brown;
+    color: rebeccapurple;
+}
+
+#hover-test:hover{
+    background: teal;
+    color: aquamarine;
+    scale: 0.9;
+}
+
+button{
+    outline: none;
+    background: gainsboro;
+    cursor: pointer;
+    color: rgb(44, 44, 44);
+    border: none;
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+button:hover{
+    scale: 0.98;
+    opacity: 0.9;
+}
+
+input[type=checkbox]:checked{
+    width: 20px;
+    height: 20px;
+}
+
+input[type=checkbox]:checked+label{
+    font-size: 20px;
+}
+
+input[name^=user]:focus{
+    background: pink;
+}
+
+button:enabled{
+    font-size: 18px;
+}
+
+button:disabled{
+    pointer-events: none;
+}

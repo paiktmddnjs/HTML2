@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover{
+            scale: 0.98;
+        }
+
+        #login-area{
+            width: 300px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        #login-area > form{
+            height: calc(100% - 40px);
+        }
+
+        #login-area > form > *{
+            width: 100%;
+        }
+
+        #login-input-area{
+            height: calc(100% - 40px);
+        }
+
+        #login-input-area > input{
+            width: 100%;
+            height: calc(50% - 12px);
+            margin-bottom: 12px;
+            border: none;
+            border-bottom: 1px solid rgb(240, 240, 240);
+            font-size: 16px;
+        }
+
+        #login-input-area > input:focus{
+            outline: none;
+        }
+
+        #login-area > form > input{
+            height: 40px;
+            border: none;
+            background: #0063b2;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #login-area > form > input:hover{
+            opacity: 0.9;
+        }
+
+        #login-area > #login-form-etc{
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- 로그인폼 전체를 감싸주는 영역 -->
+    <div id="login-area">
+        <form action="">
+            <!-- 아이디 비밀번호 입력창 -->
+            <div id="login-input-area">
+                <input type="text" placeholder="아이디를 입력하세요..." required>
+                <input type="password" placeholder="비밀번호를 입력하세요..." required>
+            </div>
+            <!-- 로그인버튼 -->
+            <input type="submit" value="로그인">
+        </form>
+        <!-- 회원가입, id/pwd찾기 -->
+        <div id="login-form-etc">
+            <a href="">회원가입</a>
+            <a href="">ID/PWD 찾기</a>
+        </div>
+    </div>
+</body>
+</html>

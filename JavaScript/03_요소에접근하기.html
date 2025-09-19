@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 300px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML요소에 접근하기(해당 요소객체 가져오기)</h1>
+
+    <h3>1) 아이디를 이용해서 요소를 가져오기</h3>
+    <div class="area" id="area1">area1영역</div>
+    <button onclick="accessId()">아이디로 접근</button>
+
+    <script>
+        //document.getElementById('요소의 아이디')
+        function accessId(){
+            let area1 = document.getElementById('area1');
+
+            area1.className = 't1 t2 t3';
+            area1.style.background = 'yellow';
+            area1.style.width = '200px';
+            area1.style.height = '200px';
+
+            area1.innerText = '클릭된 area1영역';
+        }
+    </script>
+
+    <h3>2) 태그명으로 요소 가져오기</h3>
+    <ul>
+        <li>안녕하세요.</li>
+        <li><h2>안녕하세요.</h2></li>
+        <li>안녕하세요.</li>
+        <li>안녕하세요.</li>
+        <li>안녕하세요.</li>
+    </ul>
+    <button onclick="accessTagName();">태그명으로 검색</button>
+    <script>
+        //태그명으로 요소 가져올 때
+        //document.getElementsByTagName('요소의 태그명');
+        function accessTagName(){
+            let elList = document.getElementsByTagName('li');
+            console.log(elList.length);
+            console.log('첫번째 요소의 html : ' + elList[1].innerHTML);
+            console.log('첫번째 요소의 text : ' + elList[1].innerText);
+
+            for(let i=0; i<elList.length; i++){
+                elList[i].innerHTML = (i+1) + '번째 li태그 입니다.';
+                elList[i].style.color = 'blue';
+            }
+        }
+    </script>
+
+    <script>
+        //3) document.getElementsByName('요소의 네임속성 값'); -> 여러개 리턴
+        //4) document.getElementsByClassName('요소의 class명') -> 여러개 리턴
+    </script>
+
+    <h5>5) 내가 원하는 요소를 자유롭게 가져오기</h5>
+    
+    <div id="tmp1">테스트입니다.</div>
+    <div id="tmp2">
+        <h2>안녕하세요.</h2>
+        <h2>최지원입니다.</h2>
+    </div>
+    <span>span요소 입니다.</span>
+    <h2>h2요소 입니다.</h2>
+
+    <br>
+
+    <button onclick="accessSelector()">선태자로 검색</button>
+    <script>
+        //선택자를 이용해서 요소를 가져올 때 사용
+        //document.querySelector('선택자') -> 요소 한개만 반환, 찾는 요소가 없을 때는 null반환, 조건에 맞는 값이 여러개여도 한개만 가져옴.
+        //document.querySelectorAll('선택자') -> 선택한 요소 전부 배열로 반환, 찾는 요소가 없을 때는 빈 배열을 반환
+
+        function accessSelector(){
+            const div1 = document.querySelector('#tmp1');
+            const h2El = document.querySelectorAll('#tmp2 h2 div');
+            const spanEl = document.querySelector('#tmp2+span');
+
+            console.log(div1);
+            console.log(h2El);
+            console.log(spanEl);
+        }
+    </script>
+</body>
+</html>

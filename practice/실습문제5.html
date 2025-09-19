@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    fieldset {
+        margin-top: 30px;
+        width: 30%;
+
+    }
+
+    ul {
+
+        display: flex;
+        justify-content: center;
+
+    }
+
+    li {
+
+        display: inline;
+        margin-right: 55px;
+    }
+
+    #OptionBox {
+        display: flex;
+        padding: 20px;
+        margin-top: 40px;
+        border: 1px solid black;
+        height: 90px;
+        width: 30%;
+        display: none;
+    }
+
+    #titleBox {
+
+        border: 1px solid black;
+        height: 40px;
+        width: 80%;
+        color: black;
+
+
+    }
+
+    #search-box {
+        width: 80%;
+        height: 50px;
+
+    }
+
+    #search {
+        width: 70%;
+        height: 14px;
+        border: 1px solid black;
+        display: inline;
+
+    }
+
+    #search-button {
+
+        display: inline;
+        width: 70px;
+        height: 40px;
+
+    }
+</style>
+
+<body>
+    <fieldset>
+        <legend>검색할 항목을 선택하세요.</legend>
+
+        <ul>
+            <li><input type="radio" name="option" value="제목"><label>제목</label></li>
+            <li><input type="radio" name="option" value="날짜"><label>날짜</label></li>
+            <li><input type="radio" name="option" value="작성자"><label>작성자</label></li>
+        </ul>
+
+
+    </fieldset>
+    <div id="OptionBox">
+        <div id="titleBox"></div>
+        <div id="search-box">
+            <div id="search"></div>
+            <button id="search-button" onclick="">검색</button>
+        </div>
+
+    </div>
+
+
+
+
+
+    <script>
+
+
+        const radios = document.querySelectorAll("input[name='option']");
+        const box = document.getElementById("OptionBox");
+        const title = document.getElementById("titleBox");
+        const searchDiv = document.getElementById("search");
+
+        radios.forEach(radio => {
+            radio.addEventListener("change", () => {
+                if (radio.checked) {
+                    box.style.display = "block";
+                    box.title.textContent = "검색할 " + radio.value + "을 입력하세요 : ";
+                    searchDiv.innerHTML = `<input type="text" style="width:300px; height:30px;">`;
+                }
+
+            });
+
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>

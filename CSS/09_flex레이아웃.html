@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container{
+            border: 3px solid black;
+            height: 200px;
+            display: flex;
+            /* flex-direction: row; 가로기준으로 아이템들을 정렬하겠다 -> 기본값 */
+            /* flex-direction: column; 세로기준 */
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .flex-item{
+            font-size: 24px;
+            padding: 24px;
+            text-align: center;
+            border: 1px solid red;
+            width: 100px;
+            height: 50px;
+            flex: 1;
+        }
+
+        .container2{
+            height: 500px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: row; /*주축 : 가로*/
+            gap: 10px;
+            align-items: center; /*교차축 정렬*/
+            flex-wrap: wrap;
+        }
+
+        .flex-item2{
+            font-size: 24px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid red;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flex레이아웃</h1>
+    <p>
+        웹페이지 레이아웃을 효율적으로 구성하기위한 기술, flexbox를 사용하면 <br>
+        요소들을 부모요소기준으로 유연하게 정렬하고 배치할 수 있다. <br>
+
+        정렬을 위한 부모 컨테이너 <br>
+        diplay: flex -> 해당요소를 flex컨테이너로 사용하겠다. <br>
+        flex-direction: row | column -> 정렬을 위한 주축을 행(가로)/열(세로) 지정 <br>
+        justify-content : flex-start | flex-end | center | space-between | space-around...
+                         -> 주축의 정렬을 어떻게 할것인가? <br>
+        align-item :  flex-start | flex-end | center | space-between | space-around
+                        -> 교차축의 정렬을 어떻게 할것인가? <br>
+        gap : px단위로 입력 -> 아이템간의 간격을 어떻게 할것인가? <br>
+        flex-wrap : nowrap | wrap -> 줄바꿈여부(공간부족시 줄넘김) <br>
+
+        정렬을 위해 내부 아이템 <br>
+        flex : 2 1 100px 비율,수축,기본크기
+        flex-grow: 비율;
+        flex-shrink: 수축시최소비율;
+        flex-basis: 기본크기;
+        order : 보이는 순서 우선도;
+    </p>
+
+    <div class="container">
+        <div class="flex-item item1">1번</div>
+        <div class="flex-item item2" style="flex: 2;">2번</div>
+        <div class="flex-item item3">3번</div>
+    </div>
+
+    <br><br>
+
+    <div class="container2">
+        <div class="flex-item2">1번</div>
+        <div class="flex-item2">2번</div>
+        <div class="flex-item2">3번</div>
+        <div class="flex-item2">4번</div>
+        <div class="flex-item2">5번</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    fieldset {
+
+        margin-top: 50px;
+    }
+
+    .Box {
+
+        display: flex;
+        height: 25px;
+    }
+
+    #idTrue {
+        width: 180px;
+        font-size: 12px;
+   
+
+    }
+
+    #pwdCheckTrue {
+        width: 180px;
+        font-size: 12px;
+      
+
+    }
+</style>
+
+<body>
+    <fieldset>
+        <legend>회원가입</legend>
+        <div class="Box"> 아이디 : &nbsp;<input type="text" id="ID">
+            <div id="idTrue"></div>
+        </div>
+        <br>
+        비밀번호 : &nbsp;<input type="password" id="pwd">
+        <br> <br>
+        <div class="Box">
+            비밀번호 확인 : &nbsp; <input type="password" id="pwdCheck">
+            <div id="pwdCheckTrue"></div>
+        </div>
+        <br>
+        이름 : &nbsp; <input type="text" name="name">
+        <br> <br>
+        <button id="register" onclick="memberRegister()">회원가입</button>
+
+    </fieldset>
+
+
+    <script>
+
+        function memberRegister() {
+
+            let memberId = document.getElementById('ID').value;
+            let idsuccess = 0;
+            let pwdsuccess = 0;
+            const name = document.querySelector('input[name="name"]').value.trim();
+            // trim()을 사용하여 value의 공백을 제거하였다.
+            const existingMembers = ['paiktmddnjs', 'user1', 'user2'];
+
+            if (memberId === "") {
+                alert("아이디를 입력해주세요.");
+                idInput.focus();
+                return;
+            }
+            if (document.getElementById('pwd').value === "") {
+                alert("비밀번호를 입력해주세요.");
+                pwdInput.focus();
+                return;
+            }
+            if (document.getElementById('pwdCheck').value === "") {
+                alert("비밀번호 확인을 입력해주세요.");
+                pwdCheckInput.focus();
+                return;
+            }
+            if (name === "") {
+                alert("이름을 입력해주세요.");
+                nameInput.focus();
+                return;
+            }
+            if (existingMembers.includes(memberId)) {
+
+                document.getElementById('idTrue').textContent = "이미 존재하는 아이디입니다.";
+                document.getElementById('idTrue').style.color = "red";
+                idsuccess = 0;
+            } else {
+
+                document.getElementById('idTrue').textContent = "사용 가능한 아이디입니다.";
+                document.getElementById('idTrue').style.color = "green";
+                idsuccess = 1;
+
+            }
+
+            if (document.getElementById('pwd').value !== document.getElementById('pwdCheck').value) {
+                document.getElementById('pwdCheckTrue').textContent = "비밀번호가 일치하지 않습니다.";
+                document.getElementById('pwdCheckTrue').style.color = "red";
+                pwdsuccess = 0;
+            } else {
+                document.getElementById('pwdCheckTrue').textContent = "비밀번호가 일치합니다.";
+                document.getElementById('pwdCheckTrue').style.color = "green";
+                pwdsuccess = 1;
+            }
+
+            if (idsuccess === 1 && pwdsuccess === 1) {
+
+                alert(`${name}님, 회원가입이 성공적으로 완료되었습니다^^`);
+
+                document.getElementById('ID').value = '';
+                document.getElementById('pwd').value = '';
+                document.getElementById('pwdCheck').value = '';
+                document.querySelector('input[name="name"]').value = '';
+
+                // 메시지 초기화
+                document.getElementById('idTrue').textContent = '';
+                document.getElementById('pwdCheckTrue').textContent = '';
+
+            }
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
+
+
+<!---------------------------------------  (정답)  ------------------------------------------------- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .join-form{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .none-pass{color: red;}
+        .pass{color: green;}
+    </style>
+</head>
+<body>
+    <h1>Practice4</h1>
+    <form action="">
+        <fieldset>
+            <legend>회원가입</legend>
+            <div class="join-form">
+                <div>
+                    아이디 : <input id="id-input" type="text" data-name="아이디" onkeyup="checkId(this)" >
+                    <span id="id-review"></span>
+                </div>
+                <div>비밀번호 : <input type="password" data-name="비밀번호"></div>
+                <div>
+                    비밀번호 확인 : <input id="pwd-check-input" type="password" data-name="비밀번호 확인" onblur="checkPwd()">
+                    <span id="pwd-review"></span>
+                </div>
+                <div>이름 : <input type="text" data-name="이름"></div>
+                <div><button onclick="return validate();">회원가입</button></div>
+            </div>
+        </fieldset>
+    </form>
+
+    
+    <script>
+        function validate(){
+            //전체 input입력여부 체크
+            const inputList = document.querySelectorAll('.join-form input');
+
+            for(let i=0; i<inputList.length; i++){
+                if(inputList[i].value.trim() === ""){
+                    alert(inputList[i].dataset.name + "은 필수입니다.");
+                    inputList[i].focus();
+                    return false; 
+                }
+            }
+
+            if(!checkPwd()){
+                alert('비밀번호가 일치하지 않습니다.');
+                let pwdCheckInput = document.getElementById('pwd-check-input');
+                pwdCheckInput.value = "";
+                pwdCheckInput.focus();
+                return false; 
+            }
+            
+            const idInput = document.getElementById('id-input');
+            if(idInput.value.trim() === 'user01'){
+                alert('사용할 수 없는 ID입니다.');
+                idInput.focus();
+                return false; 
+            }
+
+        }
+
+        /**
+         * 라이브러리에서는 keydown이벤트를 더 많이 사용함.
+         * - 모바일에서 OS에 따라 키보드 이벤트와 충돌할 수 있기 때문에.
+         */
+        function checkPwd(){
+            const pwdInputList = document.querySelectorAll('input[type="password"]');
+            const pwdReview = document.getElementById('pwd-review'); 
+
+            if(pwdInputList[0].value === pwdInputList[1].value){
+                pwdReview.innerText = "비밀번호가 일치합니다.";
+                pwdReview.className = 'pass';
+                return true;
+            } else {
+                pwdReview.innerText = "비밀번호가 일치하지 않습니다";
+                pwdReview.className = 'none-pass';
+                return false;
+            }
+        }
+
+        function checkId(_this, callback){
+            setTimeout(function(){
+                console.log(_this.value);
+                const idReview = document.getElementById('id-review');
+                if(_this.value === 'user01'){
+                    idReview.innerText = "이미 존재하는 아이디입니다.";
+                    idReview.className = 'none-pass';
+                } else {
+                    idReview.innerText = "사용 가능한 아이디입니다.";
+                    idReview.className = 'pass';
+                }
+            },0);
+        }
+    </script>
+</body>
+</html> -->

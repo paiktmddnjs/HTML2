@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>폼(from) 관련태그</h1>
+    <P>
+        form태그는 사용자로부터 입력을 받아 서버에 전달하는 영역을 정의하느 HTML태그. <br>
+        form태그내에 submit버튼을 클릭시 해당 form안에 작성된 input요소의 값들을 전부 서버로 요청을 보냄<br>
+
+
+        - action : 해당 form에 사용자가 입력한 값들을 전달하면서 요청을 보낼 서버의 경로<br>
+        - method : 요청 전송방식을 지정하는 방식을 지정하느 속성(get(기본값), post)<br>
+        > get : 요청시 사용자가 입력한 값들을 head에 담아 전송한다. -> url에 값이 전부 노출<br>
+        > post : 요청시 사용자가 입력한 값들을 HTTP 본문(body)에 숨겨서 전송 -> url에 값이 노출x <br>
+
+        form내에 sumbit버튼을 클릭시 action에 지정된 서버로 사용자가 입력한 값들이 전달되면서 요청됨
+    <div class=""></div>
+
+    </P>
+
+
+
+    <form action="/" method="">
+        <label for="q">검색어</label>
+        <input type="text" id="q" name="query">
+        <button type="submit"> 검색</button>
+    </form>
+
+    <from action="/signup" method="post">
+        <label>
+            아이디 : <input type="text" name="username">
+        </label><br>
+        <label>
+            비밀번호 : <input type="password" name="password">
+        </label><br>
+        <button type="submit">로그인</button>
+        </fieldset>
+        </form>
+
+
+        <br>
+
+        <h2>text와 관련된 input태그의 타입</h2>
+        <h3>type="text"(기본값)</h3>
+        <p>
+            - 한줄짜리 텍스트를 입력할 수 있는 텍스트 상자<br>
+            - maxlength(최대길이), placeholder(설명), required(필수입력)등의 속성과 함께 사용
+        </p>
+        아이디 : <input type="text" name="userId" placeholder="아이디를 입력하세요..." maxlength="12" required>
+
+        <br>
+        <h3>type="passwrod"</h3>
+        <p>
+            - 입력한 문자를 ***형태로 가려줌, 비밀번호 입력이 사용, 속성은 text와 동일하게 사용함.
+
+        </p>
+        <h3>이외 텍스트 관련 타입</h3>
+        <input type="search" value="최지원">
+        <input type="url">
+        <input type="email">
+
+        <h2>여러 줄 입력 : textarea</h2>
+        <p>
+            - 여러 줄의 텍스트를 한번에 입력 가능 <br>
+            - cols ,rows로 크기 지정, resize:none으로 크기조절 제한 가능
+        </p>
+        <textarea name="descript" style="resize: none;" cols="50" rows="10">안녕하세요! </textarea>
+
+        <hr>
+        <h2>숫자와 관련된 input태그의 타입</h2>
+        <h3>type="number"</h3>
+        <p>
+            - 숫자만 입력 가능, 스핀박스 표시<br>
+            - min, max, step등의 속성사용 가능
+        </p>
+        <input type="number" name="amount" min="0" max="20" step="5">
+
+
+        <h3>type="range"</h3>
+        <p>- 슬라이드바를 통해 숫자를 입력.</p>
+        <input type="range" min="0" max="100" step="10">
+
+        <hr>
+
+        <h2> 날짜 및 시간 입력</h2>
+        <h3>type = "date | month | week | time | datetime-local"</h3>
+        date : <input type="date"><br> <!--연도/월/일-->
+        month : <input type="month"><br> <!-- 연도/월-->
+        week : <input type="week"><br> <!-- 연도/주-->
+        time : <input type="time"><br> <!--시/분-->
+        time : <input type="datetime-local"><br> <!--연도/월/일/시/분-->
+
+        <hr>
+
+        <h2>Select Box</h2>
+        <p>드롭다운 목록에서 무조건 하나를 선택</p>
+        <select name="">
+            <option value="1">국밥</option>
+            <option value="2">비빔밥</option>
+            <option value="3">피자</option>
+        </select>
+
+        <!-- 만약 피자 선택후 서버로 전송시 데이터는 menu=3으로 전송됨-->
+
+        <h2>radio button</h2>
+        <p>
+            - 여러 항목 중 하나만 선택 가능. <br>
+            - 같은 name 속성값을 가진 라이오버튼끼리 그룹화
+        </p>
+
+        <label>
+            <input type="radio" name="color" value="red" checked>
+            빨강
+        </label>
+        <label>
+            <input type="radio" name="color" value="yello">
+            노랑
+        </label>
+
+        <h2>CheckBox</h2>
+        <p>
+            - 동시에 여러값을 선택할 수 있음 <br>
+            - 같은 name을 부여하면 배열형태로 서버에 전달됨.
+        </p>
+        <label>
+            <input type="checkbox" name="color" value="red" checked>
+            빨강
+        </label>
+            <label>
+            <input type="checkbox" name="color" value="yellow" >
+            노랑
+        </label>
+            <label>
+            <input type="checkbox" name="color" value="blue" >
+            파랑
+        </label>
+
+        <h2>v폼전용 버튼</h2>
+        <p>
+            - form태그 내에서 기능을 담당하는 input속성들이 있음
+            - submit(기본값) , reset,button(form 내에서는 기본값이 submit이기 떄문에 버튼에 무조건 type을 button으로 지정해야 button)
+        </p>
+
+</body>
+
+</html>

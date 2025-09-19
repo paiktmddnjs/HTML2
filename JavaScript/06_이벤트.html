@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            background: beige;
+            height: 100px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <h2>1. 이벤트 모델의 종류</h2>
+
+    <h3>고전 이벤트 모델</h3>
+    <p>
+        특정 요소객체를 가지고와서 해당 요소의 이벤트 속성에 접근한 후 <br>
+        이벤트 핸들러를 연결하는 방식 <br>
+        이벤트를 제거할 수도 있다. (element.onclick = handler;) <br>
+        동일한 이벤트속성에 여러개의 이벤트핸들러를 연결할 수 없다. -> 한개만 등록가능(덮어씀)
+    </p>
+
+    <button id="btn1">실행확인</button>
+    <button id="btn2">실행확인</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        let area1 = document.getElementById('area1');
+
+        let btn1 = document.getElementById('btn1');
+        btn1.onclick = function(){
+            area1.innerHTML += "btn1이 클릭되었습니다.<br>";
+        }
+
+        let btn2 = document.getElementById('btn2');
+        btn2.onclick = function(){
+            area1.innerHTML += "btn2가 클릭되면서 이벤트가 제거되었습니다.<br>";
+            btn1.onclick = null; //이벤트 제거.
+        }
+    </script>
+
+    <br>
+
+    <h3>인라인 이벤트 모델</h3>
+    <p>
+        요소 내부에 직접적으로 이벤트 속성을 제시해서 실행할 내용을 정의하는 방식 <br>
+        따로 script코드에 작성된 함수를 호출하는 방식. html, js가 섞임 -> 유지보수가 어려움
+    </p>
+
+    <button id="btn3" onclick="test1();">실행확인</button>
+    <button id="btn4" onclick="document.getElementById('area2').innerHTML = '버튼4가 클릭되었습니다.'; ">실행확인</button>
+    <div id="area2" class="area"></div>
+    <script>
+        function test1(){
+            document.getElementById('area2').innerHTML = '버튼3이 클릭되었습니다.';
+        }
+    </script>
+
+    <h3>표준 이벤트 모델</h3>
+    <p>
+        w3c(웹 표준을 만드는 국제 기구) <br>
+        공식적으로 지정한 이벤트 모델  <br>
+        element.addEventListener('이벤트명', 이벤트핸들러 함수) <br>
+        동일 이벤트에 여러개의 핸들러를 등록할 수 있음. -> removeEnventListener()를 통해 이벤트 제거가능(동일한 함수의 참조값을 전달)
+    </p>
+
+    <button id="btn5">실행확인</button>
+    <script>
+        const btn5 = document.getElementById('btn5');
+
+        let btn5Click = function(){
+            alert("표준이벤트 모델 : 클릭");
+        }
+
+        btn5.addEventListener('click', btn5Click);
+        btn5.removeEventListener('click', btn5Click);
+
+        btn5.addEventListener('mouseenter', function(){
+              console.log("마우스가 요소의 접근함.");
+        })
+    </script>
+
+    <h2>이벤트가 발생한 요소객체에 접근하는 방법</h2>
+    <button id="btn6"><span>기본이벤트 방식</span></button>
+    <button id="btn7">표준이벤트 방식</button>
+    <button onclick="test2(event, this);">인라인이벤트 방식</button>
+
+    <script>
+        // button.onclick = function(event){
+        //     test2(ev);
+        // }
+
+        let btn6 = document.getElementById('btn6');
+        btn6.onclick = function(event){ //이벤트핸들러
+            //이벤트핸들러는 첫번째 매개변수로 무조건 event객체가 전달됨.
+            console.log(event.target); //event객체에는 현재발생한 이벤트의 정보가 전부 들어있음.
+            console.log(this);
+        }
+
+        let btn7 = document.getElementById('btn7');
+        btn7.addEventListener("click", function(ev){
+            console.log(ev.target);
+            console.log(this);
+        })
+
+        function test2(ev, _this){
+            console.log(this);
+            console.log(_this);
+            console.log(ev);
+        }
+    </script>
+</body>
+</html>

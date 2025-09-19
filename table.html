@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>15x15 테이블 생성</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    
+    td {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #333;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <table id="board"></table>
+
+  <script>
+    const table = document.getElementById("board");
+    const size = 15;
+
+    for (let i = 0; i < size; i++) {
+      const row = document.createElement("tr");
+
+      for (let j = 0; j < size; j++) {
+        const cell = document.createElement("td");
+        // Optional: 셀에 좌표 표시하기
+        // cell.textContent = `${i},${j}`;
+        row.appendChild(cell);
+      }
+
+      table.appendChild(row);
+    }
+  </script>
+
+</body>
+</html>

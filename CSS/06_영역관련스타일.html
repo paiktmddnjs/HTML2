@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .test {
+            /* box-sizing: content-box;  기본값 -> width / height = 컨텐츠 영역만*/
+            box-sizing: border-box; /* width/height = 컨텐츠 + 패딩 + 보더*/
+            background: yellow;
+            width: 100px;
+            height: 100px;
+            border: 10px solid black;
+            /* padding: 12px; */
+            /* margin: 12px; 컨텐츠 크기에 영향을 주지 않음, 외부여백 */
+        }
+
+        #test1{
+            padding: 100px; /* 사방으로 100px의 내부여백 추가*/
+        }
+
+        #test2{
+            padding-top: 100px;
+            padding-right: 20px;
+            padding-bottom: 30px;
+            padding-left: 40px;
+        }
+
+        #test3{
+            padding: 10px;
+            padding: 20px 50px;
+            padding: 20px 50px 100px;
+            padding: 100px 20px 30px 40px; /*위부터 시계방향으로 설정, 설정되지 않은 값은 대칭으로 적용*/
+        }
+
+        #test4{
+            margin: 50px;
+        }
+
+        #test5{
+            margin-top: 50px;
+            margin-left: 20px;
+            margin: 100px 30px 10px 10px; /*위 오른쪽 아래 윈쪽*/
+        }
+
+        #test6{
+            margin: 0px auto; /*좌우 margin auto로 주면 부모의 넓이의 남는 공간에 알아서 마진을 균일하게 준다(중앙정렬)*/
+        }
+
+        #test7{
+            border: 1px solid black;
+            border-width: 5px;
+            border-style: dotted;
+            border-color: blue;
+            border-top: 3px solid red;
+            border-radius: 12px;
+        }
+
+        #test8{
+            width: 500px;
+            height: 500px;
+            /* border-radius: 10px 100px 0 0; */
+            background-color: aquamarine;
+            background: cadetblue;
+            background: url(../HTML/images/sample.jpg);
+            background-image: url(../HTML/images/sample.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>여백및 간격 관련 스타일</h1>
+    <h2>요소영역 -> content(내용) + padding(여백) + border(테두리)</h2>
+
+    <h4>기존 div</h4>
+    <div class="test">기존div</div>
+
+    <h3>Padding</h3>
+    <p>내용영역(content)와 테두리영역(border) 사이의 거리, 여백을 조절하는 스타일 속성</p>
+
+    <div class="test" id="test1">컨텐츠영역</div>
+    <div class="test" id="test2">컨텐츠영역</div>
+    <div class="test" id="test3">컨텐츠영역</div>
+
+    <hr>
+
+    <h3>margin</h3>
+    <p>타 요소들 간의 간격을 조절할 때 사용</p>
+    <!-- h태그, p태그등 마진을 기존적으로 가지고 있는 태그들이 있음. -->
+
+    <div class="test" id="test4">컨텐츠영역</div>
+    <div class="test" id="test5">컨텐츠영역</div>
+    <div class="test" id="test6">컨텐츠영역</div>
+
+    <hr>
+
+    <h3>테두리</h3>
+    <div class="test" id="test7">컨텐츠영역</div>
+
+    <hr>
+
+    <h3>배경관련 스타일</h3>
+    <div class="test" id="test8">배경</div>
+</body>
+
+</html>

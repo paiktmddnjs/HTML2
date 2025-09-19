@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>자바스크립트에서 데이터 입/출력</h1>
+
+    <!--
+        window/document 
+        - 웹브라우저에서 자바스크립트를 실행할 때 기본으로 제공되는 전역 객체, 전역 객체를 이해해야한다.
+        window : 브라우저 창이 열릴때마다 생성되는 전역 객체(Gloval Object), 브라우저환경에서 모든 전역변수, 함수, 타이머등등은 window에 소속됨.
+                 최상위 객체이므로 window.생략가능 -> window내부에 선언된 메서드나 변수는 window.생략하고 가져올 수 있음.
+        document : window.document객체를 말함. 현재 열려있는 HTML 문서(DOM)을 표현하는 객체.
+                    DOM API를 통해 요소 탐색/수정/추가 가능
+    -->
+
+    <h2>1. 데이터를 출력하는 구문</h2>
+    <p>
+        1) [window.]alert("출력하고싶은 문구"); <br>
+        2) [window.]console.log("콘솔창에 출력하고싶은 문구") <br>
+        3) document.write("화면상에 출력하고자하는 문구"); <br>
+        4) 선택한요소.innerHtml ="html코드" | 선택한요소.innerText ="텍스트"
+    </p>
+
+    <script>
+        // alert("출력");
+        console.log("콘솔에 출력");
+    </script>
+
+    <button onclick="documentWrite()">body영역에 출력</button>
+    <script>
+        function documentWrite() {
+            //출력할 문구에 html태그를 포함해서 전달함.
+            let str = `<table>
+                            <tr>
+                                <td>값 1</td>
+                                <td>값 2</td>
+                                <td>값 3</td>
+                            </tr>
+                            <tr>
+                              <td>값 4</td>
+                               <td>값 5</td>
+                                <td>값 6</td>
+                                </tr>
+                        </table>`;
+
+            document.write(str);
+        }
+    </script>
+
+    <br><br>
+
+    <h3>선택한요소.innerHTML | 선택한요소.innerText = "요소에 출력하고자하는 문구"</h3>
+    <div id="area1" class="container" style="color: red;">
+        자바스크립트에서 어떤 요소(Element)안의 값(content)을 가지고 온다거나 <br>
+        변경하고자 할 때 <br>
+        innerHTML, innerText라는 속성에 접근
+    </div>
+
+    <button onclick="changeText();">확인</button>
+    <script>
+        function changeText() {
+            //위의 area1의 아이디를 가진 요소를 가져와서 안에 값을 확인/변경
+
+            //area1요소를 가져오기
+            let divEl = document.querySelector("#area1");
+            console.log(divEl);
+
+            //선택한요소 속성에 접근이 가능함.
+            console.log(divEl.id);
+            console.log(divEl.className);
+
+            //선택한요소의 속성 변경 가능
+            divEl.className = "wrap";
+
+            //선택요소의 컨텐츠를 가져오기(해당요소 태그내부의 있는 값)
+            console.log(divEl.innerHTML); //요소내부의 content영역의 모든 HTML코드를 포함한 값을 가져옴
+            console.log(divEl.innerText); //요소내부의 content영역의 모든 Text만 포함해서 가져옴.
+
+            divEl.innerHTML = "<h3>내부 컨텐츠 변경</h3>";
+            divEl.innerText = "<h3>내부 컨텐츠 변경</h3>";
+
+            divEl.style.color = "blue";
+        }
+    </script>
+
+    <button onclick="testPrompt()">prompt버튼</button>
+    <div id="area3"></div>
+
+    <script>
+        function testPrompt() {
+            //질문내용을 입력하면 답을 입력할 수 있는 텍스트상자와
+            //확인, 취소버튼을 제공
+            //확인클릭시 텍스트상자의 내용을 반환, 취소시 null반환
+
+            let name = prompt("이름을 입력하세요.");
+            let age = prompt("나이를 입력하세요.");
+
+            let divEl = document.querySelector("#area3");
+            divEl.innerHTML = `이름 : ${name} <br> 나이 : ${age}`;
+        }
+    </script>
+
+    <br><br>
+
+    <h3>선택한 input요소.value</h3>
+
+    아이디 : <input type="text" id="userId"> <br>
+    비밀번호 : <input type="password" id="userPwd"><br>
+
+    <button onclick="testInput()">클릭</button>
+    <br>
+    결과 : <input type="text" id="result">
+
+    <script>
+        function testInput() {
+            let idInput = document.querySelector("#userId");
+            let pwdInput = document.querySelector("#userPwd");
+
+            console.log(idInput.value);
+            console.log(pwdInput.value);
+
+            let resultInput = document.querySelector("#result");
+            resultInput.value = `아이디 : ${idInput.value}, 비밀번호 : ${pwdInput.value}`;
+        }
+    </script>
+</body>
+
+</html>

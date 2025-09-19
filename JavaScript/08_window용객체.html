@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            width: 500px;
+            min-height: 200px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>window</h1>
+    <p>
+        window객체는 자바스크립트의 최상위 객체 BOM, DOM으로 나뉨 <br>
+        - BOM(Brower Object Model) : location(주소관리), screen(창), nevigator(브라우저)
+        - DOM(Document Object Model) : document
+    </p>
+
+    <h4>[window.]open([url, '특성'])</h4>
+    <button onclick="test1()">네이버</button>
+    <script>
+        function test1(){
+            //window.open(); //새창열기
+            //window.open(url, 창이름, 옵션);
+            //window.open("https://www.naver.com");
+            //창이름 : 브라우저 창의 이름을 부여할 수 있음, 이름에 따라서 동일이름의 창은 1번만 생성됨.
+            // window.open("https://www.naver.com", "naver");
+            //옵션 : 너비, 높이, 주소창여부, 툴바...
+            /*
+                창의특성
+                width(너비), height(높이)
+                
+                => yes | no
+                resizable(창의 크기조절 기능), location(주소창), menuber(메뉴바)
+                scrollbar(스크롤바),  status(상태표시줄), toolbar(도구모음)...
+            */
+            let popup = window.open("https://www.naver.com", "naver", "width=500, height=500, resizeable=no, location=no");
+            setTimeout(function(){
+                popup.close(); //코드를 통해서 브라우저창을 닫을 수 있음.
+            }, 2000);
+        }
+    </script>
+
+    <hr>
+
+    <h3>window객체의 timer관련 메서드</h3>
+    <h4>window.setTimeOut(함수, 시간ms)</h4> <!-- 일정시간 후에 함수를 딱 한번만 호출 (비동기)-->
+    <button onclick="test2()">실행</button>
+    <script>
+        function test2(){
+            //const myWindow = window.open();
+            //myWindow.alert("ㅋㅋㅋㅋㅋㅋㅋ");
+
+            // setTimeout(function(){
+            //     myWindow.close();
+            // }, 3000)
+
+            console.log("처음로딩 -> 화면이 그려짐");
+            console.log("서버에 데이터 요청");
+            setTimeout(function(){ //서버에서 응답이 2초걸림
+                console.log("서버에서 응답도착");
+                console.log("응답데이터를 가지고 화면을 구성");
+            },2000)
+
+            console.log("데이터없이 화면의 틀을 미리 구성");
+        }
+    </script>
+
+    <br>
+
+    <h4>window.setInterval(함수, 시간ms)</h4>
+    <button onclick="test3()">실행</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        function test3(){
+            const area = document.querySelector("#area1");
+
+            let count = 0;
+            // area.innerHTML = `<h3>${count}</h3>`;
+            //1초마다 함수를 실행
+            setInterval(function(){
+                // area.innerHTML = `<h3>${++count}</h3>`;
+                area.innerHTML = getNowTimeHHMMSS();
+            }, 1000);
+        }
+
+        function getNowTimeHHMMSS(){
+            const now = new Date();
+            let hour = now.getHours(); //시
+            let min = now.getMinutes(); //분
+            let sec = now.getSeconds(); //초
+
+            const str = `${hour} : ${min} : ${sec}`;
+            return str;
+        }
+    </script>
+
+    <hr>
+
+    <h3>BOM</h3>
+    <h3>location객체</h3>
+    <p>브라우저 주소창과 관련된 객체 -> 현재 문서의 주소(URL)정보를 가졍오거나 변경하여 페이지를 이동할 수 있음.</p>
+
+    <button onclick="console.log(location)">실행</button>
+
+    <br>
+
+    <a href="https://naver.com">네이버이동</a>
+    <button onclick="location.href='https://naver.com';">네이버로이동</button>
+    <br><br>
+    <button onclick="location.assign('https://naver.com');">네이버로이동</button>
+    <button onclick="location.replace('https://naver.com');">네이버로이동</button>
+    <!-- replace : 브라우저 히스토리를 저장하지 않음(뒤로가기x) -->
+
+    <button onclick="location.href=location.href">새로고침</button>
+    <button onclick="location.reload()">새로고침</button>
+
+    <br><br><br>
+
+    <h3>screen객체</h3>
+    <button onclick="console.log(screen)">객체확인</button>
+
+    <h3>navigator객체</h3>
+    <button onclick="console.log(navigator)">객체확인</button>
+
+    <h3>history객체</h3>
+    <button onclick="console.log(history)">객체확인</button>
+</body>
+</html>

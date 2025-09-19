@@ -1,0 +1,192 @@
+body {
+    justify-self: center;
+    width: 70%;
+    margin: 0
+}
+
+nav {
+    padding-top: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    margin-top: 70px;
+    height: 1500px;
+    border: 2px solid black;
+}
+
+.nav-container {
+    position: fixed;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: row;
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    background-color: darkslategrey;
+    list-style-type: none;
+}
+
+.nav-item {
+
+    padding: 15px;
+    cursor: pointer;
+
+}
+
+.nav-item a {
+
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+#box-group {
+    border: 2px solid rgb(197, 21, 21);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+
+
+}
+
+.box {
+
+    border: 2px solid black;
+    border-radius: 14px;
+    width: 230px;
+    height: 280px;
+}
+
+#post {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid black;
+    width: 100%;
+    height: 500px;
+
+}
+
+#post-img {
+    border-radius: 20px;
+    width: 700px;
+    height: 90%;
+}
+
+#channel {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+
+.card {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 5px;
+    width: 300px;
+    cursor: pointer;
+    color: #333;
+    transition: box-shadow 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid transparent;
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    background-image:
+        linear-gradient(white, white),
+        /* 안쪽 배경 */
+        linear-gradient(270deg, #7799da, #67b1c4, #4739c9, #2575fc, #ff6a00);
+    /* 테두리용 그라데이션 */
+    background-size: 400% 400%;
+    background-repeat: no-repeat;
+}
+
+.card:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    animation: gradient-rotate 2s linear infinite;
+}
+
+@keyframes gradient-rotate {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 50% 50%;
+    }
+}
+
+.card h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+}
+
+.card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.arrow {
+    margin-left: auto;
+    font-weight: bold;
+    color: #aaa;
+}
+
+   ul, li {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;    /* black */
+        }
+
+        div {
+            /* border: 1px solid blue; */
+            box-sizing: border-box;
+        }
+        #menubar { width: 80%; height: 40px;}
+
+        #menu { height: 100%; }
+        #menu > li {
+            float: left;
+            width: 100px;
+            height: 100%;
+            text-align: center;
+        }
+
+        #menu a {
+            font-size: 18px;
+            font-weight: 900;
+            width: 100%;
+            height: 100%;
+
+            display: block;
+            /* vertical-align: middle; */
+            line-height: 35px;
+        }
+
+        #menu a:hover {
+            color: skyblue;
+            scale: 1.08;
+        }
+
+        #menu > li > ul {
+            display: none;            
+        }
+        /* a 요소에 마우스가 올라갔을 때 a 요소의 형제인 ul 요소 */
+        #menu > li > a:hover + ul {
+            display: block;
+        }
+        /* ul 요소에 마우스가 올라갔을 때 */
+        #menu > li > ul:hover {
+            display: block;
+        }

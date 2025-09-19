@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice page</title>
+</head>
+
+<body>
+
+    고객명 : <input type="text"> <br>
+    <br>
+    전화번호 : <input type="phone"><br>
+    <br>
+    E-mail : <input type="email"><br>
+    <br>
+    <form>
+        <fieldset class="radio-box">
+            <legend>피자 사이즈</legend>
+
+            <label><input type="radio" name="size" value="small"> Small</label><br>
+            <label><input type="radio" name="size" value="medium" checked> Medium</label><br>
+            <label><input type="radio" name="size" value="large"> Large</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>토핑 선택</legend>
+            <label><input type="checkbox" name="food" checked>
+                베이컨</label><br>
+            <label><input type="checkbox" name="food">
+                치즈</label><br>
+            <label><input type="checkbox" name="food" checked>
+                양파</label><br>
+            <label><input type="checkbox" name="food">
+                버섯</label>
+        </fieldset>
+
+
+
+        <br>
+
+        희망 배송 시간 : <input type="datetime-local">
+
+        <br> <br>
+
+        배송시 요청사항 : <textarea name="delivery_description"></textarea>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            border: 2px solid #888;
+            padding: 10px;
+            width: 450px;
+            text-align: end;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #333;
+        }
+
+        label {
+            display: inline;
+            margin: 5px 0;
+        }
+
+        #box2 {
+            border: 1px solid black;
+            font-weight: bold;
+            color: rgb(6, 60, 6);
+            height: 150px;
+
+            width: 450px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <form>
+        <fieldset>
+            <legend>취미</legend>
+            <label>
+                <input type="checkbox" id="selectAll" name="hobby" value="전체선택">전체선택
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="총합">총합
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="소설">소설
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="시/에세이">시/에세이
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="경제/경영">경제/경영
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="자기개발">자기개발
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="아동">아동
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="여행">여행
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="과학">과학
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="역사/문화">역사/문화
+            </label>
+            <label>
+                <input type="checkbox" name="hobby" value="외국어">외국어
+            </label>
+
+
+        </fieldset>
+    </form>
+
+    <br><br><br>
+
+    <button onclick="showChecked()">카테고리 선택</button>
+    <div id="box2"></div>
+
+
+    <script>
+
+        const selectAllCheckbox = document.getElementById('selectAll');
+        selectAllCheckbox.addEventListener('change', function () {
+            const checkboxes = document.querySelectorAll('input[name="hobby"]');
+            checkboxes.forEach(cb => {
+                cb.checked = selectAllCheckbox.checked;
+                // name="hobby"인 각각의 객체가 담긴 cb에 대해 selectAllCheckbox.checked가 참이면 그것을
+                // cb.checked에 맞추어서 true/false로 체크를 구분한다.
+            });
+        });
+
+        function showChecked() {
+
+            const checkboxes = document.querySelectorAll('input[name="hobby"]:checked');
+            const selected = [];
+
+            checkboxes.forEach(checkbox => {
+                selected.push(checkbox.value);
+            });
+
+
+            const box2Result = document.getElementById('box2');
+
+
+            if (selected.length > 0) {
+                box2Result.textContent = '선택한 항목 : ' + selected.join(' / ');
+            }
+            else {
+
+                box2Result.textContent = '아무것도 선택하지 않았습니다!.';
+            }
+
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

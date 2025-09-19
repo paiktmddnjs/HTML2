@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            background: lightblue;
+            border: 1px solid black;
+        }
+
+        .small{ height: 250px; }
+        .big{ height: 400px; }
+
+        h5{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체</h1>
+
+    <h3>객체 선언및 사용</h3>
+    <p>
+        객체는 중괄호 {}를 이용해서 생성하고 <br>
+        중괄호안에 이 객체에 필요한 속성과 값을 정의한다. <br>
+        속성명 : 속성값 (key : value)형태로 정의한다. <br>
+        속성값으로는 모든 자료형의 값을 담을 수 있음.
+    </p>
+
+    <pre>
+        변수 = {
+            속성명 : 속성값,
+            속성명 : 속성값,
+            속성명 : 속성값,
+            ...
+        }
+    </pre>
+
+    <button onclick="test1();">실행</button>
+    <div id="area1" class="area"></div>
+    <script>
+        function test1(){
+            const arr = ["Dry Mango", 4000, "pickle", ["mango", "sugar"]];
+            //0번째 제품명, 1번째 가격, 2번째 종류, 3번째 재료들 -> 순서기반으로 작성시 명확하게 값을 지정할 수 없으며, 순서에따라 잘못 사용할 확률이 높음.
+            //js에 배열 -> java의; 컬렉션(ArrayList)와 유사
+
+            const product = {
+                pName: "Dry Mango",
+                price: 4000,
+                kind: "pickle",
+                ingredient: ["mango", "sugar"],
+                toString: function(){
+                    return this.pName + " " + this.price + " " + this.kind + " " + this.ingredient;
+                }
+            }
+            //js의 객체 -> 자바의 컬렉션(HashMap)과 유사
+
+            console.log(typeof product);
+            const area1 = document.getElementById("area1");
+            area1.innerHTML += ("product : " + product + "<br>");
+            //js에서는 문자열 + 객체 -> 암묵적 형 변환이 발생함, 기본적으로 js도 기본적으로 toString()메서드를 호출
+            //객체의 기본 toString() -> [object Object]를 반환
+
+            //객체의 속성에 접근하는 방법
+            //방법1. .를 이용해서 접근하는 방법 : 객체.속성명
+            area1.innerHTML += ("pName : " + product.pName + "<br>");
+            area1.innerHTML += ("price : " + product.price + "<br>");
+            area1.innerHTML += ("kind : " + product.kind + "<br>");
+
+            //방법2. []를 이용해서 접근하는 방법 : 객체['속성명']
+            area1.innerHTML += ("pName : " + product['pName'] + "<br>");
+            area1.innerHTML += ("price : " + product['price'] + "<br>");
+            area1.innerHTML += ("kind : " + product['kind'] + "<br>");
+        }
+    </script>
+
+    <br><br><br>
+
+    <h3>객체의 메서드 속성</h3>
+    <p>객체의 속성 중 함수자료형인 속성을 메서드라고 부름</p>
+
+    <button onclick="test2();">실행</button>
+    <div id="area2" class="area small"></div>
+    <script>
+        function test2(){
+            const area2 = document.querySelector("#area2");
+
+            const name = "최지원";
+            const eat = function(food){
+                console.log(name + "은 " + food + "먹는다.");
+            }
+            eat("바나나킥");
+
+            const jiwon = {
+                name: "최지원",
+                gender: "남자",
+                eat: function(food, screen){
+                    console.log(this.name + "은 " + food + "먹는다.");
+                    screen.innerHTML += this.name + "은 " + food + "먹는다.";
+                }
+            }
+
+            jiwon.eat("피자", area2);
+        }
+    </script>
+
+    <br><br>
+
+    <h3>객체배열을 사용한 다량의 데이터관리</h3>
+    <button onclick="test3();">실행</button>
+    <div id="area3" class="area big"></div>
+
+    <script>
+        function test3(){
+            //학생리스트 -> 서버로부터 데이터를 받으면 아래와같이 객체의 배열형태의 데이터를 받게된다.
+            const stdList = [
+                {name: "최지원", java: 75, db: 80, front: 90},
+                {name: "최지투", java: 80, db: 90, front: 80},
+                {name: "최지삼", java: 75, db: 75, front: 90},
+                {name: "최지사", java: 80, db: 80, front: 75},
+                {name: "최지오", java: 90, db: 80, front: 75},
+                {name: "최지육", java: 90, db: 75, front: 90},
+            ]
+
+            //모든 학생의 이름, 총점, 평균정보를 area3요소에 나타내자.
+            for(let i=0; i<stdList.length; i++){
+                stdList[i].totalScore = function(){
+                    return this.java + this.db + this.front;
+                };
+
+                stdList[i].avgScore = function(){
+                    return this.totalScore() / 3;
+                };
+            }
+
+            const area3 = document.getElementById('area3');
+            area3.innerHTML = "";
+            for(let i=0; i<stdList.length; i++){
+                area3.innerHTML += `<div style="margin-bottom: 8px;">
+                                        <h5>이름 : ${stdList[i].name}</h5>
+                                        <h5>총점 : ${stdList[i].totalScore()}</h5>
+                                        <h5>평균 : ${stdList[i].avgScore()}</h5>
+                                    </div>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+
+<body>
+
+    <fieldset>
+        <fieldset>
+            <legend>필수 입력 사항</legend>
+            ID : <input type="id" values="userid"><button>중복확인</button><br>
+            비밀번호 : <input type="passwrod" name="userpwd" placeholder="영문,소문자,기호를 반드시 입력하시오."><br>
+            비밀번호 확인 : <input type="passwrod" values="12345"><br>
+            Email : <input type="email">@<select name="">
+                <option value="1">naver.com</option>
+                <option value="2">daum.net</option>
+                <option value="3">cacako.com</option>
+            </select>
+        </fieldset>
+
+
+
+
+        <fieldset>
+            <legend>추가 정보</legend>
+            <form action="/upload" method="post" enctype="multipart/form-data">프로필 사진 :
+                <label for="file">파일 선택:</label>
+                <input type="file" id="file" name="myFile">
+
+            </form>
+
+            <br><br>
+
+
+            성별 : <label>
+                <input type="radio" name="gender" value="men">
+                남자
+            </label>
+            <label>
+                <input type="radio" name="gender" value="women">
+                여자
+            </label>
+            <br>
+
+            생년월일 : <input type="date"><br>
+
+            <br>
+
+            취미<br>
+            <label>
+                <input type="checkbox" name="exercise" value="red" checked>
+                야구
+            </label>
+            <label>
+                <input type="checkbox" name="exercise" value="yellow">
+                농구
+            </label>
+            <label>
+                <input type="checkbox" name="exercise" value="blue">
+                축구
+            </label><br>
+            <label>
+                <input type="checkbox" name="exercise" value="red" checked>
+                공부
+            </label>
+            <label>
+                <input type="checkbox" name="exercise" value="yellow">
+                음악감상
+            </label><br>
+            <label>
+                <input type="checkbox" name="exercise" value="sadf">
+                기타: <input type="text" name="text">
+            </label><br>
+
+            자기소개 : <textarea name="descript" style="resize: none;" cols="50" rows="10"></textarea>
+
+        </fieldset>
+
+
+        <br>
+
+        <button>회원가입</button>
+        <button>다시입력</button>
+        <button>이전으로</button>
+    </fieldset>
+
+
+</body>
+
+</html>

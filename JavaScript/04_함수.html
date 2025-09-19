@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 500px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>함수(function)</h1>
+    
+    <h3>선언적 함수</h3>
+    <pre>
+        function 함수명([매개변수, 매개변수...]){
+            함수 호출시 실행할 코드
+
+            [return 결과값;]
+        }
+    </pre>
+
+    <button onclick="test1()">실행</button>
+    <div id="area1" class="area"></div>
+
+    <script>
+        function test1(){
+            document.querySelector("#area1").innerHTML += "test1함수 실행됨<br>";
+        }
+    </script>
+
+    <br>
+
+    <h3>익명함수</h3>
+    <pre>
+        변수 | 속성 = function ([매개변수, 매개변수...]){
+                                함수 호출시 실행할 코드
+
+                                [return 결과값;]
+                               }
+    </pre>
+
+    <button id="btn">이벤트 속성으로 실행</button>
+    <button onclick="test2();">변수로 실행</button>
+    <div id="area2" class="area"></div>
+    <script>
+        let test2 = function(){
+            document.getElementById('area2').innerHTML = '익명함수를 변수에 담아서 실행';
+        }
+
+        let btn = document.getElementById('btn');
+        btn.onclick = function(){
+            document.getElementById('area2').innerHTML = '이벤트 핸들러로 실행';
+        }
+        
+        // 이벤트 : 브라우저에서 발생하는 모든 동작(click, keyup, drag, load...)
+        // 이벤트 핸들러 : 특정 이벤트가 발생했을 때 실행되는 함수
+    </script>
+
+    <hr>
+
+    <h2>함수의 매개변수</h2>
+    <button onclick="test3('최지원', 15, '경기도 군포시');">실행확인</button>
+    <button onclick="test3('최지원', 15);">실행확인</button>
+    <button onclick="test3('최지원', 15, '경기도 안양시', '남자', false);">실행확인</button>
+
+    <div id="area3" class="area"></div>
+    <script>
+        function test3(name, age, address){
+            console.log(arguments); //함수 호출시 전달된 인자를 내부적으로 arguments에 배열로 담아둠.
+            document.getElementById('area3').innerHTML = name + " " + age + " " + address;
+        }
+    </script>
+
+    <br>
+
+    <h2>함수, 객체를 매개변수로 활용</h2>
+    <script>
+     
+        //아이디, 비밀번호를 전달해서 유저정보 가져오기
+        function login(loginInfo, callback){
+            //로그인정보를 가지고 서버에 전달
+            //결과에따라서 로그인 성공
+
+            console.log("서버에 요청 : " + loginInfo);
+            setTimeout(function(){ //서버에 요청을 보내고 응답에 3초정도 시간이 걸린다는 가정
+                //서버에서 응답 성공 후 user정보 반환
+                let serverReturnInfo = {
+                    userId : 'user01',
+                    userPwd : 'pass01',
+                    name : '최지원',
+                    age : 55
+                }
+
+                callback(serverReturnInfo);
+                
+            }, 3000) // 첫번째 인자로 전달된 함수는 두번째인자의 시간(ms)만큼 딜레이 후 실행됨.
+            console.log('함수 실행 후');
+        }
+
+        let id = 'user01';
+        let pwd = 'pass01';
+        login({
+            userId : id,
+            userPwd : pwd
+        }, function (userInfo){
+            console.log(userInfo);
+        });
+        
+    </script>
+
+    <br>
+
+    <!-- 스코프 : 이름을 어디서 찾을 것인가? -->
+
+    <!-- this : 사용시점의 스코프를 가르킴(나를 누가 호출했는가?) -->
+    <!-- inline에서의 this를 사용시 사용한 태그요소를 객체로 전달 -->
+    <button onclick="test4(this)">1</button> <!--인라인 이벤트에서 this를 사용시 항상 현재 요소 자신을 가르킨다.-->
+    <button onclick="test4(this.innerHTML)">2</button>
+    <input type="button" value="3" onclick="test4(this.value)">
+    <button id="btn-4">4</button>
+
+    <script>
+        // console.log(this);
+        function test4(_this){
+            console.log("_this : ", _this);
+            console.log("this : ", this);
+        }
+
+        test4();
+
+        const btn4 = document.getElementById('btn-4');
+        btn4.onclick = function(){
+            console.log(this);
+        }
+    </script>
+
+    <button onclick="test5(this)">클릭</button>
+    <script>
+        function test5(_btn){
+            if(_btn.style.background !== "red"){
+                _btn.style.background = 'red';
+            } else {
+                _btn.style.background = 'white';
+            }
+        }
+    </script>
+
+    <br><br>
+
+    <h2>함수의 리턴</h2>
+    <h3>일반적인 값 리턴</h3>
+
+    <button onclick="test6()">실행</button>
+    <div id="area5" class="area"></div>
+    <script>
+        function run(){
+            const value = parseInt(Math.random() * 100 + 1);
+            console.log(value);
+            return value;
+        }
+
+        function test6(){
+            document.getElementById('area5').innerHTML += ('랜덤값 : ' + run() + "<br>");
+        }
+    </script>
+
+    <h3>함수를 리턴</h3>
+    이름 : <input type="text" id="user-name">
+    <button onclick="test7()();">실행</button>
+    <script>
+        function test7(){
+            const inputEl = document.getElementById('user-name');
+
+            return function(){
+                alert(inputEl.value);
+            }
+        }
+    </script>
+</body>
+</html>

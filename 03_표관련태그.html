@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>표관련태그</title>
+</head>
+
+<body>
+    <!--
+        표 : 웹 문서에서 자료를 정리할 때 주로 사용
+             행과 열로 이루어져 있고, 행과 열이 만나는 지점을 셀이라고 함.
+        <table></table> : 기본적인 표를 생성해주는 태그
+        <tr></tr> : 한 행을 나타내는 태그
+        <th></th> : 제목셀을 나타내는 태그
+        <td></td> : 일반셀을 나타내는 태그
+    -->
+
+    <h1>기본적인 표 만들기</h1>
+    <table border="1">
+        <caption><b>휴대폰의 종류</b></caption>
+        <tr>
+            <th>모델명</th>
+            <th>제조사</th>
+            <th>홈페이지</th>
+        </tr>
+        <tr>
+            <td>갤럭시 S22</td>
+            <td>삼성전자</td>
+            <td>https://www.samsung.com/sec/</td>
+        </tr>
+        <tr>
+            <td>아이폰16</td>
+            <td>애플</td>
+            <td>https://www.apple.com/kr/?afid=p240%7Cuc~p872_kw1808&cid=aos-kr-kwna-Brand-nbs</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <h1>표의 행과 열을 병합하는 속성</h1>
+    <!--
+        셀(th, td)태그의 속성을 이용해서 행 또는 열을 병합할 수 있음.
+        
+        colspan = "2" : 2개의 열을 병합 
+        rowspan = "2" : 2개의 행을 병합
+    -->
+
+    <h3>이력서</h3>
+    <table border="1">
+        <tr>
+            <td width="130" height="130" colspan="2" rowspan="2">사진</td>
+            <td width="80">이름</td>
+            <td width="200">최지원</td>
+        </tr>
+        <tr>
+            <td>연락처</td>
+            <td>010-7524-6990</td>
+        </tr>
+        <tr>
+            <td height="50">주소</td>
+            <td colspan="3">경기도 군포시 xxxx xxxx xxxx</td>
+
+        </tr>
+        <tr>
+            <td>자기소개 </td>
+            <td colspan="3">안녕하세요. 저는 백승원 입니다. 저는 코딩을 배우는 중입니다.
+                안녕하세요. 저는 백승원 입니다. 저는 코딩을 배우는 중입니다.
+                안녕하세요. 저는 백승원 입니다. 저는 코딩을 배우는 중입니다.
+                안녕하세요. 저는 백승원 입니다. 저는 코딩을 배우는 중입니다.
+                안녕하세요. 저는 백승원 입니다. 저는 코딩을 배우는 중입니다.
+            </td>
+
+        </tr>
+      
+    </table>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>주소</th>
+            </tr>
+
+
+        </tbody>
+        </tabl>
+
+</body>
+
+</html>
