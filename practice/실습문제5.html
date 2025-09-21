@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
     fieldset {
         margin-top: 30px;
@@ -28,44 +28,57 @@
     }
 
     #OptionBox {
+
         display: flex;
-        padding: 20px;
+        align-content: center;
+        padding-left: 10px;
         margin-top: 40px;
         border: 1px solid black;
-        height: 90px;
-        width: 30%;
+        background-color: rgb(175, 178, 180);
+        height: 80px;
+        width: 31%;
         display: none;
+
     }
 
     #titleBox {
 
-        border: 1px solid black;
-        height: 40px;
+
+        height: 25px;
         width: 80%;
+
         color: black;
 
 
     }
 
     #search-box {
+
         width: 80%;
-        height: 50px;
+        height: 40px;
 
     }
 
     #search {
-        width: 70%;
-        height: 14px;
-        border: 1px solid black;
+
+
+
         display: inline;
 
     }
 
     #search-button {
-
+        margin-left: 30px;
         display: inline;
-        width: 70px;
-        height: 40px;
+        width: 55px;
+        height: 30px;
+
+    }
+
+    input[type="date"],
+    input[name="date"] {
+        font-family: 'Malgun Gothic', sans-serif;
+        width: 120px;
 
     }
 </style>
@@ -93,8 +106,6 @@
 
 
 
-
-
     <script>
 
 
@@ -103,14 +114,27 @@
         const title = document.getElementById("titleBox");
         const searchDiv = document.getElementById("search");
 
-        radios.forEach(radio => {
-            radio.addEventListener("change", () => {
-                if (radio.checked) {
+        //forEach를 사용해 radios배열을 순차적으로 순회하며 radio변수로 그 요소들을 받아준다.
+        radios.forEach(function (radio) {
+            // 라디오 버튼의 상태가 바뀌었을 때 발생하는 addEventListener을 사용하였다.
+            radio.addEventListener("change", function () {
+                // if문을 사용하여 radio가 체크되고 radio의 value가 체크된 input의 value와 같다면 수행하게 해주었다.
+                if (radio.checked && radio.value === "제목") {
+                    //id가 OptaionBox인 요소가 저장된 box의 style을 display: block 해주어 시각적으로 보이게 해주었다.
                     box.style.display = "block";
-                    box.title.textContent = "검색할 " + radio.value + "을 입력하세요 : ";
-                    searchDiv.innerHTML = `<input type="text" style="width:300px; height:30px;">`;
+                    titleBox.textContent = "검색할 " + radio.value + "을 입력하세요 : ";
+                    searchDiv.innerHTML = `<input type="text" style="width: 350px; height: 20px;">`;
                 }
-
+                else if (radio.checked && radio.value === "날짜") {
+                    box.style.display = "block";
+                    titleBox.textContent = "검색할 " + radio.value + "를 선택하세요 : ";
+                    searchDiv.innerHTML = '<input type="date" placeholder="연도-월-일">' + " - " + '<input type="text" name="date" placeholder="연도-월-일">'
+                }
+                else if (radio.checked && radio.value === "작성자") {
+                    box.style.display = "block";
+                    titleBox.textContent = "검색할 " + radio.value + " 아이디를 입력하세요 : ";
+                    searchDiv.innerHTML = `<input type="text" name="userId" style="width: 250px; height: 20px;">`;
+                }
             });
 
         });

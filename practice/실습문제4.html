@@ -59,27 +59,29 @@
         </ul>
 
     </fieldset>
-    <button onclick="input()">입력 값 출력하기</button>
+    <button onclick="output()">입력 값 출력하기</button>
     <div id="result"> </div>
 
     <script>
 
-        function input() {
-            let texts = [];
-            let inputs = document.getElementsByClassName("a1");
+        function output() {
+            let texts = []; // let타입으로 배열을 만들어준다.
+            let outputs = document.getElementsByClassName("a1");
 
             // li1 ~ li6 텍스트 모으기
             for (let i = 1; i <= 6; i++) {
+                // for문을 사용하여 li1 ~ li6까지 각각 텍스트를 저장해주고 texts 배열에 저장하였다.
                 let text = document.getElementById(`li${i}`).textContent;
                 texts.push(text);
             }
 
             // 결과 출력
             let result = "";
-            for (let j = 0; j < inputs.length; j++) {
-                result += texts[j] + inputs[j].value + "<br>";
+            for (let j = 0; j < outputs.length; j++) {
+                //각 li의 텍스트와 outputs에 저장된 input들의 값을 String형태로 더해 result에 저장한다.(EX. "구매자" + "백승원")
+                result += texts[j] + outputs[j].value + "<br>";
             }
-
+            // id가 result인 div에 html형식으로 텍스트를 등록한다.
             document.getElementById("result").innerHTML = result;
         }
 
