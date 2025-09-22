@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 외부라이브러 -->
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+
+    <style>
+        .qa-box > div{
+            width: 300px;
+            height: 30px;
+            background:rgb(167, 167, 255);
+            text-align: center;
+            line-height: 30px;
+            border: 1px solid rgb(100, 100, 250);
+            cursor: pointer;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+
+        .qa-box > p{
+            border: 1px solid rgb(100, 100, 250);
+            width: 300px;
+            height: 100px;
+            border-radius: 12px;
+            padding: 12px;
+            box-sizing: border-box;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>jQuery</h1>
+
+    <h3>jquery이벤트</h3>
+
+    <input type="submit" value="완료">
+
+    <script>
+        //$("선택자").이벤트(이벤트핸들러);
+        // $(":submit").mouseenter(function(){
+        //     $(this).val("제출하기");
+        // });
+
+        // $(":submit").mouseleave(function(){
+        //     $(this).val("완료");
+        // });
+
+        //hover(mouseenter이벤트 핸들러, mouseleave이벤트 핸들러);
+        $(":submit").hover(function(){
+            $(this).val("제출하기");
+        }, function(){
+            $(this).val("완료");
+        });
+    </script>
+
+    <hr>
+
+    <div class="area" id="wrap">
+        <h6>클릭시 h6요소 추가</h6>
+    </div>
+
+    <script>
+        /*
+        function addEvent(){
+            const h6List = document.querySelectorAll("#wrap>h6");
+            for(let h6El of h6List){
+                h6El.onclick = function(){
+                    let h6El = document.createElement('h6'); //<h6></h6>
+                    h6El.innerHTML = '클릭시 h6요소 추가'; //<h6>클릭시 h6요소 추가</h6>
+
+                    //특정요소.appendChild(요소) -> 특정요소에 맨 마지막 자식요소로 새로운 요소를 추가함.
+                    document.querySelector("#wrap").appendChild(h6El);
+                    addEvent();
+                }
+            }
+        }
+
+        addEvent();
+        */
+        
+        //jquery에서 동적으로 이벤트를 부여하는 방법
+        //$(부모요소).on(이벤트명, 자식요소,이벤트핸들러) --> 자식요소에 동적으로 함수가 연결됨.
+        $("#wrap").on("click", "h6", function(){
+            $("#wrap").append("<h6>클릭시 h6요소 추가</h6>");
+        });
+
+        // document.querySelector("#wrap>h6").onclick = function(){
+        //     //js로 요소를 직접 생성.  document.createElement('생성할 요소');
+        //     let h6El = document.createElement('h6'); //<h6></h6>
+        //     h6El.innerHTML = '클릭시 h6요소 추가'; //<h6>클릭시 h6요소 추가</h6>
+
+        //     //특정요소.appendChild(요소) -> 특정요소에 맨 마지막 자식요소로 새로운 요소를 추가함.
+        //     document.querySelector("#wrap").appendChild(h6El);
+
+        //     //document.querySelector("#wrap").innerHTML += "<h6>클릭시 h6요소 추가</h6>";
+        //     // document.querySelector("#wrap").innerHTML를 문자열로 가지고 온다음 "<h6>클릭시 h6요소 추가</h6>"문자열과
+        //     //더한다음 다시 document.querySelector("#wrap").innerHTML에 넣어줌.
+        //     //문자열로 변환해서 합처주는 과정에서 모든 이벤트가 사라짐.
+        // }
+
+        // $("#wrap>h6").click(function(){
+        //     $("#wrap").append("<h6>클릭시 h6요소 추가</h6>");
+        // })
+    </script>
+
+    <h2>시각적인 효과(Effect 메서드)</h2>
+    <p>페이지 내에 애니메이션효과를 주기위해 사용되는 메서드</p>
+
+    <h3>* show, hide, toggle</h3>
+    <p>선택된 요소가 점점 커지면서 보여지고, 점점작아지면서 사라지게 만드는 메서드</p>
+    
+    <button id="show-btn">보여주기</button>
+    <button id="hide-btn">숨기기</button>
+    <button id="toggle-btn">토글</button>
+
+    <br><br>
+    <img id="hide-show-img" src="https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/529/f30232ed5191a0790964b64b5ff63d99_res.jpeg" alt="테스트이미지">
+    <script>
+        $("#show-btn").click(function(){
+            $("#hide-show-img").show(500);
+        });
+
+        $("#hide-btn").click(function(){
+            $("#hide-show-img").hide(1000);
+        });
+
+         $("#toggle-btn").click(function(){
+            $("#hide-show-img").toggle(1500);
+        });
+    </script>
+
+    <h3>* fedeIn, fedeOut, fedeToggle</h3>
+    <p>선택된 요소가 점점 선명해지면서 보여지고, 점점흐려지면서 사라지게 만드는 메서드</p>
+    
+    <button id="fedeIn-btn">보여주기</button>
+    <button id="fedeOut-btn">숨기기</button>
+    <button id="fedeToggle-btn">토글</button>
+
+    <br><br>
+    <img id="fade-img" src="https://d2u3dcdbebyaiu.cloudfront.net/uploads/atch_img/529/f30232ed5191a0790964b64b5ff63d99_res.jpeg" alt="테스트이미지">
+    <script>
+        $("#fedeIn-btn").click(function(){
+            $("#fade-img").fadeIn(500);
+        });
+
+        $("#fedeOut-btn").click(function(){
+            $("#fade-img").fadeOut(1000);
+        });
+
+         $("#fedeToggle-btn").click(function(){
+            $("#fade-img").fadeToggle(1500);
+        });
+    </script>
+
+    <h3>slideDown()과 sildeUp()</h3>
+    <div class="qa-box">
+        <div>Q. 반품은 언제되나요?</div>
+        <p>A. 택배사에서 수거확인 후 2~7일 이내에 처리가 완료됩니다.</p>
+
+        <div>Q. 반품은 언제되나요?</div>
+        <p>A. 택배사에서 수거확인 후 2~7일 이내에 처리가 완료됩니다.</p>
+
+        <div>Q. 환불은 언제되나요?</div>
+        <p>A. 환분을 2~5분이내에만 가능합니다.</p>
+
+        <div>Q. 반품은 언제되나요?</div>
+        <p>A. 택배사에서 수거확인 후 2~7일 이내에 처리가 완료됩니다.</p>
+
+        <div>Q. 반품은 언제되나요?</div>
+        <p>A. 택배사에서 수거확인 후 2~7일 이내에 처리가 완료됩니다.</p>
+    </div>
+
+    <script>
+        $(".qa-box > div").click(function(){
+            console.log($(this).next()); //선택된요소에 뒤에있는 요소
+            
+            const $p = $(this).next();
+            if($p.css("display") === "none") {
+                $(".qa-box > p").slideUp();
+                $p.slideDown();
+            } else {
+                $p.slideUp();
+            }
+        })
+    </script>
+</body>
+</html>
