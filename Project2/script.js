@@ -75,6 +75,15 @@ let currentPlayer = "black";  // 변수명 수정
 
 table.addEventListener("click", function (e) {
   const cell = e.target.closest("td");
+
+
+  const row = parseInt(cell.dataset.row);
+  const col = parseInt(cell.dataset.col);
+
+  if (checkWin(row, col, currentPlayer)) {
+    alert(`${currentPlayer === "black" ? "흑" : "백"}돌 승리!`);
+    table.removeEventListener("click", arguments.callee); // 게임 종료
+  }
   if (!cell) return;
 
   const stone = cell.querySelector(".stone");
@@ -88,4 +97,52 @@ table.addEventListener("click", function (e) {
 
   // 다음 플레이어로 변경
   currentPlayer = currentPlayer === "black" ? "white" : "black";
+
+
 });
+
+function checkWin(row, col, color) {
+  const directions = [
+    { dr: 0, dc: 1 },   // →
+    { dr: 1, dc: 0 },   // ↓
+    { dr: 1, dc: 1 },   // ↘
+    { dr: 1, dc: -1 },  // ↙
+  ];
+
+  for (const { dr, dc } of directions) {
+    let count = 1;
+
+    // 한 방향으로 연속 돌 세기
+    count += countStones(row, col, dr, dc, color);
+    // 반대 방향으로도 세기
+    count += countStones(row, col, -dr, -dc, color);
+
+    if (count >= 5) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function countStones(row, col, dr, dc, color) {
+  let count = 0;
+  let r = row + dr;
+  let c = col + dc;
+
+  while (r >= 0 && r < size && c >= 0 && c < size) {
+    const nextCell = table.rows[r].cells[c];
+    const stone = nextCell.querySelector(".stone");
+
+    if (stone && stone.classList.contains(color)) {
+      count++;
+      r += dr;
+      c += dc;
+    } else {
+      break;
+    }
+  }
+
+  return count;
+}
+
