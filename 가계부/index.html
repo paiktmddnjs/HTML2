@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>가계부</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>가계부</h1>
+
+        <!-- 입력 영역 -->
+        <div class="input-area">
+            <input id="date-input" type="date">
+            <div class="input-group">
+                <input type="text" id="expense-content" placeholder="내용 입력">
+                <input type="number" id="expense-amount" placeholder="금액 입력">
+                <button id="todo-add-btn">추가</button>
+            </div>
+
+            <select id="type-input">
+                <option value="income">수입</option>
+                <option value="expense">지출</option>
+            </select>
+            <button id="add-btn">추가</button>
+        </div>
+
+        <!-- 목록 -->
+        <ul id="record-list"></ul>
+
+        <!-- 합계 영역 -->
+        <div class="summary">
+            <p>총 수입: <span id="total-income">0</span>원</p>
+            <p>총 지출: <span id="total-expense">0</span>원</p>
+            <p>잔액: <span id="balance">0</span>원</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
