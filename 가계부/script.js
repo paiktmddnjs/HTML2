@@ -2,12 +2,12 @@
 
 let todos = []; //todo 객체를 담을 배열이다.
 
-const List = document.getElementById('todo-list');
-const outputRadios = document.querySelectorAll('input[name="type2"]');
-const InputContent = document.getElementById('input-content');
-const InputAmount = document.getElementById('input-amount');
-const showexpense = document.getElementsByClassName('expense');
-const showbalance = document.getElementsByClassName('balance');
+const List = document.getElementById('todo-list'); // 객체를 저장할 리스트 요소에 대한 선택
+const outputRadios = document.querySelectorAll('input[name="type2"]'); // 전체/수출/잔액 타입에 대한 요소 선택
+const InputContent = document.getElementById('input-content'); // 내용에 대한 요소 선택
+const InputAmount = document.getElementById('input-amount'); // 금액에 대한 요소 선택
+const showexpense = document.getElementsByClassName('expense'); // 지출을 보여주는 요소 선택
+const showbalance = document.getElementsByClassName('balance'); // 잔액을 보여주는 요소 선택
 
 
 function init() {
