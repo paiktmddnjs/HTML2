@@ -75,10 +75,9 @@ function todoItemRender(todo) {
     todoItem.className = 'todo-item';
 
     todoItem.innerHTML = `
-    <div id="todo-item-content">
-    <div class="date">${todo.date}</div> 
+   
     <span>${todo.content}</span>
-    <div> 
+   
     
     <div id="todo-item-money"><span>${todo.type === "income" ? "+" : "-"}${Number(todo.amount).toLocaleString()}원 &nbsp;&nbsp;</span>
     <button class="delete-btn">삭제</button>
