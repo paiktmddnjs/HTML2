@@ -29,29 +29,29 @@ body {
     color: white;
 }
 
-.header h2 {
-    margin: 0;
+.headbalance {
+    margin-top: 10px;
+    color: rgb(7, 184, 7);
+    font-size: 20px;
+    font-weight: bold;
+
 }
 
 /* 입력 영역 */
 .input-area {
     padding: 20px;
+    position: relative;
 }
 
 /* 입력 그룹 */
 .input-group {
     display: flex;
     gap: 10px;
-<<<<<<< HEAD
-    margin-top : 15px;
-    margin-bottom: 15px;
-=======
     margin-bottom: 10px;
->>>>>>> 89c886c10d03ce3fa2009f0d160436936f8e8eee
 }
 
-#expense-content,
-#expense-amount {
+#input-content,
+#input-amount {
     flex: 1;
     padding: 10px;
     border: 1px solid #ddd;
@@ -60,24 +60,7 @@ body {
     outline: none;
 }
 
-#todo-add-btn {
-    display: block;
-    width: 100%;
-    margin-top: 10px;
-    padding: 12px 0;
-    background: linear-gradient(135deg, #6d6fe6, #b979e4);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-#todo-add-btn:hover {
-    opacity: 0.9;
-}
-
-/* 타입 선택 (수입/지출) */
+/* -------------------------타입 선택 (수입/지출) ---------------------------------*/
 #type-input,
 #type-output {
     display: flex;
@@ -121,15 +104,37 @@ body {
     border: none;
 }
 
-/* 합계 영역 */
+#todo-add-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #6d6fe6, #b979e4);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#todo-add-btn:hover {
+    opacity: 0.9;
+}
+
+
+
+/* -------------------------합계 영역------------------------ */
 .summary {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
     text-align: center;
     background: #eee;
     padding: 15px 0;
-    margin-top: 10px;
-    border-radius: 6px;
+
 }
 
 .summary h3 {
@@ -156,12 +161,14 @@ body {
     color: #27ae60;
 }
 
-/* 목록 영역 */
+/* ---------------------------------목록 영역 ------------------------------------*/
+
 #todo-list {
+
     width: 100%;
     list-style: none;
     padding: 0;
-    margin: 20px 0 0 0;
+    margin: 92px 0 0 0;
 }
 
 .todo-item {
@@ -178,16 +185,20 @@ body {
     display: flex;
     flex-direction: column;
     /* 세로 배치 */
-    gap: 5px;
-    /* 요소 간 간격 */
+}
+
+#date {
+
+    margin-bottom: 5px;
+    color: rgb(207, 203, 203);
+    font-size: 14px;
 }
 
 /* 금액 + 삭제버튼 */
-#todo-item-money {
+#todo-item-balance {
     display: flex;
-    flex-direction: column;
-    /* 세로 배치 */
-    align-items: flex-start;
+    font-size: 18px;
+    font-weight: bold;
     /* 왼쪽 정렬 */
     gap: 5px;
     /* 텍스트와 버튼 간 간격 */
