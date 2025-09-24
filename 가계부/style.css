@@ -24,7 +24,31 @@ body {
     border: 1px solid rgb(255, 254, 254);
     background: linear-gradient(135deg, #6d6fe6, #b979e4);
     border-radius: 15px 15px 0 0;
+<<<<<<< HEAD
     text-align: center;
+=======
+    padding: 20px 0;
+    color: white;
+}
+
+.headbalance {
+    margin-top: 10px;
+    color: rgb(7, 184, 7);
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+/* 입력 영역 */
+.input-area {
+    padding: 20px;
+    position: relative;
+}
+
+/* 입력 그룹 */
+.input-group {
+    display: flex;
+>>>>>>> 1d929f22d23eb7dde6b11388470c145119b849be
     gap: 10px;
     margin-top: 0px;
     padding-bottom: 20px;
@@ -37,6 +61,7 @@ h2 {
     margin-bottom: 10px;
 }
 
+<<<<<<< HEAD
 
 
 /* 입력창 + 버튼 */
@@ -53,6 +78,21 @@ h2 {
 
 #type-input {
     border: 3px sloid red;
+=======
+#input-content,
+#input-amount {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* -------------------------타입 선택 (수입/지출) ---------------------------------*/
+#type-input,
+#type-output {
+>>>>>>> 1d929f22d23eb7dde6b11388470c145119b849be
     display: flex;
     justify-content: center;
     gap: 20px;
@@ -117,6 +157,7 @@ h2 {
     border: none;
 }
 
+<<<<<<< HEAD
 /* 수입 선택 시 */
 #showIncome:checked+label {
 
@@ -143,6 +184,43 @@ h2 {
     border-radius: 6px;
     width: 100%;
     outline: none;
+=======
+#todo-add-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #6d6fe6, #b979e4);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#todo-add-btn:hover {
+    opacity: 0.9;
+}
+
+
+
+/* -------------------------합계 영역------------------------ */
+.summary {
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    background: #eee;
+    padding: 15px 0;
+
+}
+
+.summary h3 {
+    margin: 0;
+>>>>>>> 1d929f22d23eb7dde6b11388470c145119b849be
     font-size: 14px;
 }
 
@@ -187,19 +265,29 @@ h2 {
 
 }
 
+<<<<<<< HEAD
 .delete-btn:hover {
     background: #d44d4d;
 }
 
 
 /* 항목 리스트 */
+=======
+/* ---------------------------------목록 영역 ------------------------------------*/
+
+>>>>>>> 1d929f22d23eb7dde6b11388470c145119b849be
 #todo-list {
+
     width: 100%;
     /* 부모 요소 폭을 가득 채움 */
     padding: 0;
+<<<<<<< HEAD
     /* ul 기본 padding 제거 */
     margin: 0;
     list-style: none;
+=======
+    margin: 92px 0 0 0;
+>>>>>>> 1d929f22d23eb7dde6b11388470c145119b849be
 }
 
 
@@ -214,6 +302,7 @@ h2 {
 
 }
 
+<<<<<<< HEAD
 /* 체크박스 */
 .todo-checkbox {
     width: 18px;
@@ -227,6 +316,30 @@ h2 {
 .todo-checkbox.checked {
     background: #55efc4;
     border-color: #00b894;
+=======
+/* 날짜 + 내용 */
+#todo-item-content {
+    display: flex;
+    flex-direction: column;
+    /* 세로 배치 */
+}
+
+#date {
+
+    margin-bottom: 5px;
+    color: rgb(207, 203, 203);
+    font-size: 14px;
+}
+
+/* 금액 + 삭제버튼 */
+#todo-item-balance {
+    display: flex;
+    font-size: 18px;
+    font-weight: bold;
+    /* 왼쪽 정렬 */
+    gap: 5px;
+    /* 텍스트와 버튼 간 간격 */
+>>>>>>> 1d929f22d23eb7dde6b11388470c145119b849be
 }
 
 /* 삭제 버튼 */

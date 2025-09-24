@@ -52,7 +52,7 @@ function addTodo() {
         id: Date.now(), //현재시간을 ms단위로 변환 -> 고유한 ID로 사용
         content: text,
         completed: false,
-        createdAt: new Date().toLocaleString(), //생성시간
+        createdAt: new Date().toLocaleString() //생성시간
     }
 
     todos.push(todo); //새로운 할일을 목록에 추가
