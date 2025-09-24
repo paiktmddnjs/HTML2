@@ -17,7 +17,7 @@ function init() {
 }
 
 
-function bindEvent() { // 추가버튼에 대한 이벤트와 
+function bindEvent() { // 추가버튼에 대한 이벤트와 라디오버튼 상태에 따른 이벤트를 설정해준다.
 
     const addBtn = document.getElementById('todo-add-btn'); // 추가버튼에 대한 클릭 이벤트이다.
     addBtn.addEventListener('click', addTodo);
