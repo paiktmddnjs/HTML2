@@ -1,8 +1,9 @@
 
 
-let todos = []; //
+let todos = []; //todo 객체를 담을 배열이다.
 
 const List = document.getElementById('todo-list');
+const outputRadios = document.querySelectorAll('input[name="type2"]');
 const InputContent = document.getElementById('input-content');
 const InputAmount = document.getElementById('input-amount');
 const showexpense = document.getElementsByClassName('expense');
@@ -16,12 +17,12 @@ function init() {
 }
 
 
-function bindEvent() {
+function bindEvent() { // 추가버튼에 대한 이벤트와 
 
-    const addBtn = document.getElementById('todo-add-btn');
+    const addBtn = document.getElementById('todo-add-btn'); // 추가버튼에 대한 클릭 이벤트이다.
     addBtn.addEventListener('click', addTodo);
 
-    outputRadios.forEach(function (radio) {
+    outputRadios.forEach(function (radio) { //type2에 대한 라디오 요소들에 대해 라디오 버튼의 상태가 바뀔때마다 render를 실행한다. 
         radio.addEventListener('change', render);
     });
 
