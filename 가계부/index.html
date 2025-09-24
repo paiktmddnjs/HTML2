@@ -9,33 +9,60 @@
 
 <body>
     <div class="container">
-        <h1>가계부</h1>
-
+        <div class="header">
+            <h2>가계부</h2>
+            <div>현재 잔액</div>
+            <div class="headbalance">0원</div>
+        </div>
         <!-- 입력 영역 -->
         <div class="input-area">
-            <input id="date-input" type="date">
+
+
             <div class="input-group">
-                <input type="text" id="expense-content" placeholder="내용 입력">
-                <input type="number" id="expense-amount" placeholder="금액 입력">
-                <button id="todo-add-btn">추가</button>
+                <input type="text" id="expense-content" placeholder="내용 입력을 입력하세요(예: 점심값, 월급)">
+                <input type="number" id="expense-amount" placeholder="금액 입력하세요">
             </div>
 
-            <select id="type-input">
-                <option value="income">수입</option>
-                <option value="expense">지출</option>
-            </select>
-            <button id="add-btn">추가</button>
+            <div id="type-input">
+                <input type="radio" id="income" value="income" name="type1" checked>
+                <label for="income">수입</label>
+
+                <input type="radio" id="expense" value="expense" name="type1">
+                <label for="expense">지출</label>
+            </div>
+
+            <button id="todo-add-btn">추가하기</button>
+
+            <div id="type-output">
+                <input type="radio" id="showAll" value="all" name="type2" checked>
+                <label for="showAll">전체</label>
+                <input type="radio" id="showIncome" value="income" name="type2">
+                <label for="showIncome">수입</label>
+                <input type="radio" id="showExpense" value="expense" name="type2">
+                <label for="showExpense">지출</label>
+            </div>
+
+            <!-- 합계 영역 -->
+            <div class="summary">
+                <div>
+                    <h3>총 수입</h3>
+                    <p class="showincome">0원</p>
+                </div>
+                <div>
+                    <h3>총 지출</h3>
+                    <p class="showexpense">0원</p>
+                </div>
+                <div>
+                    <h3>잔액</h3>
+                    <p class="showbalance">0원</p>
+                </div>
+            </div>
+
+            <!-- 목록 -->
+            <ul id="todo-list"></ul>
         </div>
 
-        <!-- 목록 -->
-        <ul id="record-list"></ul>
 
-        <!-- 합계 영역 -->
-        <div class="summary">
-            <p>총 수입: <span id="total-income">0</span>원</p>
-            <p>총 지출: <span id="total-expense">0</span>원</p>
-            <p>잔액: <span id="balance">0</span>원</p>
-        </div>
     </div>
 
     <script src="script.js"></script>
