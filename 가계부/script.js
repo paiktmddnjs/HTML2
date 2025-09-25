@@ -2,8 +2,8 @@
 
 let todos = []; //todo 객체를 담을 배열이다.
 
-const List = document.getElementById('todo-list'); // 객체를 저장할 리스트 요소에 대한 선택
-const outputRadios = document.querySelectorAll('input[name="type2"]'); // 전체/수출/잔액 타입에 대한 요소 선택
+const List = document.getElementById('todo-list'); // 객체를 저장할 리스트 요소에 대해 선택
+const outputRadios = document.querySelectorAll('input[name="type2"]'); // 전체 / 수출 / 잔액 타입에 대한 요소 선택
 const InputContent = document.getElementById('input-content'); // 내용에 대한 요소 선택
 const InputAmount = document.getElementById('input-amount'); // 금액에 대한 요소 선택
 const showexpense = document.getElementsByClassName('expense'); // 지출을 보여주는 요소 선택
@@ -22,7 +22,7 @@ function bindEvent() { // 추가버튼에 대한 이벤트와 라디오버튼 �
     const addBtn = document.getElementById('todo-add-btn'); // 추가버튼에 대한 클릭 이벤트이다.
     addBtn.addEventListener('click', addTodo);
 
-    outputRadios.forEach(function (radio) { //type2에 대한 라디오 요소들에 대해 라디오 버튼의 상태가 바뀔때마다 render를 실행한다. 
+    outputRadios.forEach(function (radio) { // type2에 대한 라디오 요소들에 대해 라디오 버튼의 상태가 바뀔때마다 render를 실행한다. 
         radio.addEventListener('change', render);
     });
 
@@ -54,7 +54,7 @@ function addTodo() {
     render();
 }
 
-// 화면을 재구성한다.
+// 화면을 재구성하기 위한 함수이다.
 function render() {
     List.innerHTML = ""; // 리스트를 비운다.
 
@@ -82,18 +82,12 @@ function todoItemRender(todo) { // List에 대한 아이템들을 생성해준�
     const todoItem = document.createElement('li'); // li요소를 생성한다.
     todoItem.className = 'todo-item';
 
-    // 두개의 div를 만들어준후 첫번째에는 추가시점 날짜와 내용을 두번째에는 추가한 금액과 삭제 버튼을 만들어주었다.
+    // 두개의 div를 만들어준후 첫번째에는 추가시점 날짜와 입력 내용을 두번째에는 추가한 금액과 삭제 버튼을 만들어주었다.
     todoItem.innerHTML = `
-<<<<<<< HEAD
-   
-    <span>${todo.content}</span>
-   
-=======
     <div class="todo-item-content">
     <div id="date">${todo.date}</div>
     <span>${todo.content}</span>
     </div>
->>>>>>> 1d929f22d23eb7dde6b11388470c145119b849be
     
     <div id="todo-item-balance">
     <span style="color: ${todo.type === "income" ? "green" : "red"};">${todo.type === "income" ? "+ " : "- "}${Number(todo.amount).toLocaleString()}원 &nbsp;&nbsp;</span>
@@ -111,6 +105,7 @@ function todoItemRender(todo) { // List에 대한 아이템들을 생성해준�
     List.appendChild(todoItem); // record-list에 대한 자식 요소로 todoItem을 추가해준다.
 }
 
+
 function deleteTodo(id) {
     //해당 ID를 목록에서 제거.
     let newTodo = [];
@@ -125,6 +120,7 @@ function deleteTodo(id) {
     todos = newTodo; // todos를 초기화시켜준다.
     render();
 }
+
 
 
 function showSummary() { //추가한 수입/지출/잔액을 계산하여 보여주는 역할이다.
