@@ -2,12 +2,12 @@
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #6d6fe6, #b979e4);
-    min-height: 100vh;
+    min-height: 100vh; /* 요소의 최소 높이를 브라우저 화면 전체 높이만큼 설정한다.*/
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; /* 세로로 위쪽에 붙어서정렬 */
 }
 
 /* 컨테이너 박스 */
@@ -60,6 +60,7 @@ body {
     outline: none;
 }
 
+
 /* -------------------------타입 선택 (수입/지출) ---------------------------------*/
 #type-input,
 #type-output {
@@ -84,7 +85,7 @@ body {
 }
 
 /* 체크된 라벨 색상 */
-#income:checked+label {
+#income:checked+label { /* 바로 뒤에 있는 label을 가리킨다. */
     background-color: #259956;
     color: white;
     border: none;
@@ -184,7 +185,7 @@ body {
 #todo-item-content {
     display: flex;
     flex-direction: column;
-    /* 세로 배치 */
+ 
 }
 
 #date {
@@ -199,9 +200,8 @@ body {
     display: flex;
     font-size: 18px;
     font-weight: bold;
-    /* 왼쪽 정렬 */
     gap: 5px;
-    /* 텍스트와 버튼 간 간격 */
+
 }
 
 /* 삭제 버튼 */
